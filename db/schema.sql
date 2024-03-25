@@ -1,0 +1,2 @@
+DROP DATABASE IF EXISTS bookSharing_db;
+CREATE DATABASE bookSharing_db;

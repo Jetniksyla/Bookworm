@@ -1,0 +1,82 @@
+[
+  {
+    "title": "The Underground Railroad",
+    "author": "Colson Whitehead",
+    "published_date": "2016",
+    "publisher_id": 1,
+    "cover_image": "the-underground-railroad.jpg",
+    "description": "A novel that follows Cora, a slave on a cotton plantation in Georgia, as she makes a desperate bid for freedom in the antebellum South through the Underground Railroad."
+  },
+  {
+    "title": "My Brilliant Friend",
+    "author": "Elena Ferrante",
+    "published_date": "2012",
+    "publisher_id": 2,
+    "cover_image": "my-brilliant-friend.jpg",
+    "description": "The story of Elena and Lila, two friends growing up in a poor neighborhood in Naples, exploring themes of friendship, social class, and the challenges of being a woman."
+  },
+  {
+    "title": "The Fault in Our Stars",
+    "author": "John Green",
+    "published_date": "2012",
+    "publisher_id": 3,
+    "cover_image": "the-fault-in-our-stars.jpg",
+    "description": "A touching novel about two teenagers, both cancer patients, who meet in a support group and fall in love, exploring themes of love, loss, and existence."
+  },
+  {
+    "title": "The Night Circus",
+    "author": "Erin Morgenstern",
+    "published_date": "2011",
+    "publisher_id": 11,
+    "cover_image": "the-night-circus.jpg",
+    "description": "A fantasy novel set around an enchanting competition between two young illusionists at a magical circus that only operates at night, exploring themes of love, magic, and rivalry."
+  },
+  {
+    "title": "All the Light We Cannot See",
+    "author": "Anthony Doerr",
+    "published_date": "2014",
+    "publisher_id": 5,
+    "cover_image": "all-the-light-we-cannot-see.jpg",
+    "description": "Set during World War II, the novel tells the story of a blind French girl and a German boy whose paths collide in occupied France."
+  },
+  {
+    "title": "A Little Life",
+    "author": "Hanya Yanagihara",
+    "published_date": "2015",
+    "publisher_id": 6,
+    "cover_image": "a-little-life.jpg",
+    "description": "A profound tale of friendship and love in New York City, centering on four friends over several decades, with a focus on one character's struggle with his past."
+  },
+  {
+    "title": "The Overstory",
+    "author": "Richard Powers",
+    "published_date": "2018",
+    "publisher_id": 7,
+    "cover_image": "the-overstory.jpg",
+    "description": "A novel about trees and a group of people who come together to save the last remnants of virgin forest, exploring the connection between human and plant life."
+  },
+  {
+    "title": "Life After Life",
+    "author": "Kate Atkinson",
+    "published_date": "2013",
+    "publisher_id": 8,
+    "cover_image": "life-after-life.jpg",
+    "description": "The story of Ursula Todd, born in 1910, who dies and is reborn multiple times, living through the events of the 20th century differently in each life."
+  },
+  {
+    "title": "The Art of Fielding",
+    "author": "Chad Harbach",
+    "published_date": "2011",
+    "publisher_id": 9,
+    "cover_image": "the-art-of-fielding.jpg",
+    "description": "A coming-of-age story set against the backdrop of college baseball, exploring friendship, ambition, and the pressures of success."
+  },
+  {
+    "title": "There There",
+    "author": "Tommy Orange",
+    "published_date": "2018",
+    "publisher_id": 10,
+    "cover_image": "there-there.jpg",
+    "description": "A novel that delves into the lives of twelve Native American characters living in Oakland, California, examining their struggles with identity, community, and history."
+  }
+]

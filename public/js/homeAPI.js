@@ -1,34 +1,85 @@
-const apiKey = "AIzaSyDbvvldgLOtmAV7OTzP0cTBAdKhU_AzCh4";
-const apiUrl = `https://www.googleapis.com/books/v1/volumes?q=Harry+Potter&key=${apiKey}`;
+document.addEventListener("DOMContentLoaded", function () {
+  document
+    .getElementById("search-button")
+    .addEventListener("click", function () {
+      const searchInput = document.getElementById("search-input").value.trim();
+      if (!searchInput) {
+        console.log("Please enter a search term.");
+        return;
+      }
 
-fetch(apiUrl)
-  .then(function (response) {
-    return response.json();
-  })
-  .then(function (data) {
-    const bookContainer = document.getElementById("book-container");
+      const apiKey = "AIzaSyDbvvldgLOtmAV7OTzP0cTBAdKhU_AzCh4";
+      const apiUrl = `https://www.googleapis.com/books/v1/volumes?q=intitle:${encodeURIComponent(
+        searchInput
+      )}&key=${apiKey}`;
 
-    // Create a new table row element
-    var card = document.createElement("div");
-    card.setAttribute("class", "card");
+      fetch(apiUrl)
+        .then((response) => {
+          if (!response.ok) {
+            throw new Error("Network response was not ok");
+          }
+          return response.json();
+        })
+        .then((data) => {
+          const bookContainer = document.getElementById("book-container");
+          bookContainer.innerHTML = ""; // Clear previous results
 
-    const cardTitle = document.createElement("h2");
-    cardTitle.textContent = data.items[0].volumeInfo.title;
+          if (!data.items || data.items.length === 0) {
+            bookContainer.innerHTML =
+              "<p>No books found with that title. Try another search query.</p>";
+            return;
+          }
 
-    const cardImage = document.createElement("img");
-    // cardImage.setAttribute("src", data.items[0].imageLinks.smallThumbnail);
+          data.items.forEach((item) => {
+            const card = document.createElement("div");
+            card.setAttribute("class", "card");
 
-    const pTag = document.createElement("p");
-    pTag.setAttribute("class", "card-body");
-    pTag.textContent = data.items[0].volumeInfo.description;
+            const cardTitle = document.createElement("h2");
+            cardTitle.textContent = item.volumeInfo.title;
 
-    card.append(cardTitle, cardImage, pTag);
-    bookContainer.appendChild(card);
-  })
-  .then((protectedData) => {
-    // Process the protected data
-    console.log("Protected Data:", protectedData);
-  })
-  .catch((error) => {
-    console.error("Error:", error);
-  });
+            const cardAuthor = document.createElement("p");
+            cardAuthor.textContent = item.volumeInfo.authors
+              ? `Author(s): ${item.volumeInfo.authors.join(", ")}`
+              : "Author(s): Unknown";
+
+            const cardImage = document.createElement("img");
+            if (
+              item.volumeInfo.imageLinks &&
+              item.volumeInfo.imageLinks.thumbnail
+            ) {
+              cardImage.setAttribute(
+                "src",
+                item.volumeInfo.imageLinks.thumbnail
+              );
+            }
+
+            const description = document.createElement("p");
+            description.textContent =
+              item.volumeInfo.description || "No description available.";
+            // Favorite btn for favorite books
+            const favoriteBtn = document.createElement("button");
+            favoriteBtn.textContent = "Add to Favorites";
+            favoriteBtn.addEventListener("click", function () {
+              addToFavorites(item); // this function sends data to your backend
+            });
+
+            card.appendChild(cardTitle);
+            if (cardImage.src) {
+              // Only append if the src was set
+              card.appendChild(cardImage);
+            }
+            card.appendChild(cardAuthor);
+            card.appendChild(description);
+            card.appendChild(favoriteBtn);
+            bookContainer.appendChild(card);
+          });
+        })
+        .catch((error) => {
+          console.error("Error:", error);
+        });
+    });
+});
+function addToFavorites(item) {
+
+  console.log("Adding to favorites:", item);
+}

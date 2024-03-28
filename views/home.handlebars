@@ -1,5 +1,36 @@
-<div id="book-container">
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Book Search</title>
+    <!-- Add any additional head content here (e.g., CSS links) -->
+  </head>
+  <body>
+    <nav id="navbar">
+  <div class="link-container">
+    <a href="/" class="nav-btn">Home</a>
+    <a href="/favorites" class="nav-btn">Favorites</a>
+  </div>
+  <a href="/login" class="nav-btn" id="login-btn">Login</a>
+  <a href="/signUp" class="nav-btn" id="signup-btn">Sign Up</a>
+</nav>
 
-</div>
 
-<script src="./js/homeAPI.js"></script>
+    <div class="main-content">
+      <div class="search-container">
+        <input
+          type="text"
+          id="search-input"
+          placeholder="your book title here..."
+        />
+        <button id="search-button">Search</button>
+      </div>
+      <div id="book-container">
+        <!-- Books will be added here by the JS script -->
+      </div>
+    </div>
+
+    <!-- JS Script for Handling API and DOM Manipulation -->
+    <script src="./js/homeAPI.js"></script>
+  </body>
+</html>

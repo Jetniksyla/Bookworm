@@ -30,72 +30,91 @@ const sess = {
 };
 
 app.use(session(sess));
+// Configure Handlebars engine
+// Configure Handlebars engine
+app.engine(
+  "handlebars",
+  hbs.engine // Use the hbs variable here instead of exphbs()
+);
+app.set("view engine", "handlebars"); // Set Handlebars as the view engine
+app.set("views", path.join(__dirname, "views")); // Set the views directory
 
-// Inform Express.js on which template engine to use
-app.engine("handlebars", hbs.engine);
-app.set("view engine", "handlebars");
 
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 app.use(express.static(path.join(__dirname, "public")));
 
-app.use(routes);
+// Route handling
+app.use("/", routes);
 
 sequelize.sync({ force: false }).then(() => {
   app.listen(PORT, () => console.log(`Now listening on ${PORT}`));
 });
 
+
+
+
+
+
+
+
+
 /* Layout
 │
 ├── config/
-│   ├── config.json
 │   └── connection.js
 │
 ├── controllers/
 │   ├── api/
-│   │   ├── userController.js
 │   │   ├── bookController.js
-│   │   └── reviewController.js
+│   │   ├── reviewController.js
+│   │   └── userController.js
+│   ├──homeRoutes.js 
 │   └── index.js
 │
 ├── db/
 │   └── schema.sql
 │
 ├── models/
-│   ├── User.js
 │   ├── Book.js
+│   ├── index.js
+│   ├── User.js
 │   └── Review.js
+│
+├── node_modules
 │
 ├── public/
 │   ├── css/
 │   │   ├── sass.css
 │   │   └── style.css
 │   └── js/
+│       ├── homeAPI.js
 │       ├── login.js
-│       ├── logout.js
-│       ├── submit-review.js
-│       └── library.js
+│       └── signup.js
 │
 ├── seeds/
-│   ├── user-seeds.js
-│   ├── book-seeds.js
-│   └── review-seeds.js
+│   ├── bookData.json
+│   ├── index.js
+│   ├── reviewData.json
+│   └── userData.json
 │
 ├── utils/
-│   └── auth.js
+│   └── helpers.js
 │
 ├── views/
-│   ├── books/
-│   ├── users/
 │   ├── layouts/
 │   │   └── main.handlebars
 │   ├── partials/
-│   │   ├── header.handlebars
+│   │   ├── login.handlebars
 │   │   └── footer.handlebars
 │   └── home.handlebars
 │
 ├── .env
+├── .envEXAMPLE
 ├── .gitignore
+├── LICENSE
+├── package-lock.json
+├── package.json
 ├── server.js
 └── package.json
 

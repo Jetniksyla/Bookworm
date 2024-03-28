@@ -7,13 +7,38 @@
     <!-- Include any necessary CSS files -->
     <link rel="stylesheet" href="/css/style.css">
     <link rel="stylesheet" href="/css/jass.css">
-
+    <link rel="stylesheet" href="/css/login-form.css">
+    <link rel="stylesheet" href="/css/signup-form.css">
 </head>
 <body>
-    {{> header}}
+        <nav>
+        <!-- Conditionally render login or logout links -->
+        {{#if logged_in}}
+        <a href="/home">profile</a> |
+        <button class="button" id="logout">logout</button>
+        {{else}}
+        {{!-- <a href="/login">login</a> --}}
+        {{/if}}
+        </nav>
+        <nav>
+        <!-- Conditionally render login or logout links -->
+        {{#if sign_up}}
+        <a href="/home">profile</a> |
+        <button class="button" id="logout">logout</button>
+        {{else}}
+        {{!-- <a href="/signup">login</a> --}}
+        {{/if}}
+        </nav>
 
     <div class="container">
         {{{body}}}
+    </div>
+    <div>
+    {{!-- {{> login}} --}}
+    </div>
+
+    <div>
+    {{> signup}}
     </div>
 
     {{> footer}}

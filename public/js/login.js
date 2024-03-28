@@ -1,19 +1,19 @@
 // Add an event listener to the form with id "login"
-document.querySelector("#login").addEventListener("submit", event => {
+document.querySelector("#loginForm").addEventListener("submit", event => {
   // Prevent the default form submission behavior
   event.preventDefault();
 
   // Create an object to store the user input (username and password)
   const userObj = {
-      username: document.querySelector("#loginUsername").value,
-      password: document.querySelector("#loginPassword").value,
+    email: document.querySelector("#email").value,
+    password: document.querySelector("#password").value,
   }
 
   // Log the user object to the console
   console.log(userObj);
 
   // Send a POST request to the "/api/users/login" endpoint with the user object as the body
-  fetch("/login", {
+  fetch("/api/users/login", {
       method: "POST",
       body: JSON.stringify(userObj), // Convert the user object to JSON format
       headers: {
@@ -24,7 +24,7 @@ document.querySelector("#login").addEventListener("submit", event => {
       if (res.ok) {
           // If successful, log "Logged in" to the console and redirect to the dashboard page
           console.log("Logged in");
-          location.href = "/home";
+          location.href = "/";
       } else {
           // If unsuccessful, display an alert message
           alert("Try again!");

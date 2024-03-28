@@ -1,0 +1,45 @@
+<form id="signupForm" action="/api/users/signup" method="POST">
+  <h2>Sign Up</h2>
+  <div>
+    <label for="username">Username:</label>
+    <input
+      type="text"
+      id="username"
+      name="username"
+      placeholder="Enter your username"
+      required
+    />
+  </div>
+  <div>
+    <label for="lastname">Last Name:</label>
+    <input
+      type="text"
+      id="lastname"
+      name="lastname"
+      placeholder="Enter your last name"
+      required
+    />
+  </div>
+  <div>
+    <label for="email">E-mail:</label>
+    <input
+      type="email"
+      id="email"
+      name="email"
+      placeholder="example@example.com"
+      required
+    />
+  </div>
+  <div>
+    <label for="password">Password:</label>
+    <input
+      type="password"
+      id="password"
+      name="password"
+      placeholder="Enter your password"
+      minlength="8"
+      required
+    />
+  </div>
+  <button class="signup-btn" type="submit">Sign Up</button>
+</form>

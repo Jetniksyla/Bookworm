@@ -1,0 +1,73 @@
+/* Center the login form */
+#loginForm {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 200px;
+  margin-top: 20px;
+  margin-left: 250px;
+}
+
+/* Style form inputs for login form */
+#loginForm input[id="email"],
+#loginForm input[type="password"] {
+  width: 100%;
+  padding: 10px;
+  margin: 9px 0;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  box-sizing: border-box;
+  font-size: 30px;
+}
+
+/* Style form labels for login form */
+#loginForm label {
+  margin-bottom: 5px;
+  font-size: 25px;
+}
+
+/* Style submit button for login form */
+.login-btn {
+  width: 140px;
+  padding: 10px;
+  margin-top: 10px;
+  background-color: #007bff;
+  color: #fff;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  font-size: 25px;
+}
+
+/* Style heading for login form */
+#h2-login-form {
+  text-align: center;
+  margin-bottom: 20px;
+  color: #333;
+  font-size: 140px;
+}
+
+/* Style 'or' span for login form */
+#loginForm span {
+  display: block;
+  text-align: center;
+  margin: 10px 0;
+  color: #333;
+  font-size: 30px;
+}
+
+/* Style 'Sign-Up' link for login form */
+#loginForm a {
+  display: block;
+  text-align: center;
+  margin-bottom: 20px;
+  color: #007bff;
+  font-size: 40px;
+  text-decoration: none;
+}
+
+/* Change color on hover for 'Sign-Up' link */
+#loginForm a:hover {
+  color: #0056b3;
+}

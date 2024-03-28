@@ -11,14 +11,11 @@
   padding: 20px;
   z-index: 100;
   justify-content: space-between;
-
 }
-
 
 .main-content {
   margin-top: 20px;
   margin-left: 250px;
-  /* Ensure content does not overlap the navbar */
   padding: 20px;
   position: relative;
   z-index: 1;
@@ -44,7 +41,7 @@
 }
 
 #login-btn:hover,
-#login-btn:focus{
+#login-btn:focus {
   background-color: #4e4d77;
   outline: none;
 }
@@ -89,12 +86,10 @@
   margin: 0 auto;
   width: fit-content;
   z-index: 101;
-  /* Above navbar for visibility */
 }
 
 #search-input {
   padding-left: 125px;
-  /* Room for the button */
   width: 550px;
   height: 55px;
   border-radius: 4px;
@@ -207,3 +202,4 @@
 .card p::-webkit-scrollbar-thumb:hover {
   background: #555;
 }
+

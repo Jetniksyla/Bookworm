@@ -1,27 +1,26 @@
-<!-- Login Form -->
-<section class="card text-center">
-  <div class="card-body">
-    <!-- Title of the card -->
-    <h3 class="card-title">Login</h3>
-    <!-- Form for login -->
-    <form id="login">
-      <!-- Username input field -->
-      <div class="card-text">
-        <label for="loginUsername">Username</label>
-        <input type="text" placeholder="username" id="loginUsername" />
-      </div>
-      <!-- Password input field -->
-      <div class="card-text">
-        <label for="loginPassword">Password</label>
-        <input type="password" placeholder="password" id="loginPassword" />
-      </div>
-      <!-- Login button -->
-      <button>Login!</button><br />
-      <!-- Link to the signup page -->
-      <a href="/signup">Sign-Up</a>
-    </form>
+<form id="loginForm" action="/api/users/login" method="POST">
+  <h2 id="h2-login-form">Login</h2>
+  <span>or</span>
+  <a href="#">Sign-UP</a>
+  <div>
+    <label for="email">Email:</label>
+    <input
+      placeholder="example@example.com"
+      type="email"
+      id="email"
+      name="email"
+      required
+    />
   </div>
-</section>
-
-<!-- Script for login functionality -->
-<script src="/public/js/login.js"></script>
+  <div>
+    <label for="password">Password:</label>
+    <input
+      placeholder="your password goes here.."
+      type="password"
+      id="password"
+      name="password"
+      required
+    />
+  </div>
+  <button class="login-btn" type="submit">Login</button>
+</form> 

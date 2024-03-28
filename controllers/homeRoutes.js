@@ -1,5 +1,6 @@
 const router = require("express").Router();
 const { Book } = require("../models");
+const { loginUser } = require('./api/userController'); 
 
 router.get("/", async (req, res) => {
   try {
@@ -29,9 +30,16 @@ router.get("/login", (req, res) => {
   }
 });
 
-// // Handle login form submission
-// router.post("/login", (req, res) => {
-//   // Handle login logic here
-// });
+
+router.get("/signup", (req, res) => {
+  try {
+    res.render("signup"); 
+  } catch (err) {
+    console.error(err);
+    res.status(500).json({ message: "Error rendering the signup page." });
+  }
+});
+
+
 
 module.exports = router;

@@ -1,0 +1,53 @@
+/* Center the signup form */
+#signupForm {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 200px;
+  margin-top: 20px;
+  margin-left: 250px;
+}
+
+/* Style form inputs for signup form */
+#signupForm input[type="text"],
+#signupForm input[type="username"],
+#signupForm input[type="email"],
+#signupForm input[type="password"],
+#signupForm input[type="text"]#lastname {
+  width: 100%;
+  padding: 10px;
+  margin: 9px 0;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  box-sizing: border-box;
+  font-size: 30px;
+  background-color: #fff;
+}
+
+/* Style form labels for signup form */
+#signupForm label {
+  margin-bottom: 5px;
+  font-size: 25px;
+}
+
+/* Style submit button for signup form */
+#signupForm .signup-btn {
+  width: 140px;
+  padding: 10px;
+  margin-top: 10px;
+  background-color: #007bff;
+  color: #fff;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  font-size: 25px;
+}
+
+/* Style heading for signup form */
+#signupForm h2 {
+  text-align: center;
+  margin-bottom: 20px;
+  color: #333;
+  font-size: 140px;
+}

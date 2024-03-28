@@ -1,3 +1,17 @@
+.book-search-title {
+  font-family: 'Georgia', serif;
+  font-size: 40px;
+  color: #6d4a50; 
+  text-align: center;
+  margin-bottom: 30px;
+  text-transform: uppercase;
+  letter-spacing: 2px;
+  border-bottom: 2px solid #D3BCC0;
+  padding-bottom: 20px;
+  /* background-image: url('/images/banned-books.jpg'); Add the path to your image */
+
+} 
+
 #navbar {
   position: fixed;
   top: 0;
@@ -14,7 +28,6 @@
 }
 
 .main-content {
-  margin-top: 20px;
   margin-left: 250px;
   padding: 20px;
   position: relative;
@@ -90,10 +103,11 @@
 
 #search-input {
   padding-left: 125px;
-  width: 550px;
+  width: 600px;
   height: 55px;
   border-radius: 4px;
   border: 2px solid #007bff;
+  font-size: 22px;
 }
 
 #search-button {
@@ -108,7 +122,7 @@
   cursor: pointer;
   width: 110px;
   border-radius: 2px;
-  font-size: large;
+  font-size: 22px;
 }
 
 #search-input:focus,
@@ -123,7 +137,7 @@
 #search-input::placeholder {
   color: #888;
   font-style: italic;
-  font-size: large;
+  font-size: 22px;
 }
 
 

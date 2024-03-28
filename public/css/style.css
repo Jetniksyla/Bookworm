@@ -1,7 +1,15 @@
+html {
+  background-color: rgb(24, 26, 27)
+}
+
+body {
+  margin: 0;
+}
+
 .book-search-title {
   font-family: 'Georgia', serif;
   font-size: 40px;
-  color: #6d4a50; 
+  color: #6d4a50;
   text-align: center;
   margin-bottom: 30px;
   text-transform: uppercase;
@@ -10,7 +18,7 @@
   padding-bottom: 20px;
   /* background-image: url('/images/banned-books.jpg'); Add the path to your image */
 
-} 
+}
 
 #navbar {
   position: fixed;
@@ -18,8 +26,8 @@
   left: 0;
   width: 250px;
   height: 100vh;
-  background-color: #004494;
-  color: white;
+  background-color: #052546;
+  color: #fff;
   display: flex;
   flex-direction: column;
   padding: 20px;
@@ -28,7 +36,7 @@
 }
 
 .main-content {
-  margin-left: 250px;
+  margin-left: 290px;
   padding: 20px;
   position: relative;
   z-index: 1;
@@ -48,7 +56,7 @@
   justify-content: center;
   align-items: center;
   font-size: 23px;
-  color: white;
+  color: #fff;
   border-radius: 4px;
   background: #3e78a7;
 }
@@ -76,8 +84,8 @@
 .nav-btn {
   margin-bottom: 10px;
   padding: 10px 20px;
-  background-color: #0056b3;
-  color: white;
+  background-color: #0a417d;
+  color: #fff;
   text-decoration: none;
   border-radius: 4px;
   transition: background-color 0.3s;
@@ -103,7 +111,7 @@
 
 #search-input {
   padding-left: 125px;
-  width: 600px;
+  width: 700px;
   height: 55px;
   border-radius: 4px;
   border: 2px solid #007bff;
@@ -116,8 +124,8 @@
   top: 2px;
   height: calc(100% - 4px);
   border: none;
-  background-color: #007bff;
-  color: white;
+  background-color: rgb(0, 98, 204);
+  color: #fff;
   border-radius: 4px 0 0 4px;
   cursor: pointer;
   width: 110px;
@@ -191,7 +199,7 @@
   width: calc(100% - 20px);
   padding: 10px;
   background-color: #007bff;
-  color: white;
+  color: #fff;
   border: none;
   cursor: pointer;
 }
@@ -216,4 +224,3 @@
 .card p::-webkit-scrollbar-thumb:hover {
   background: #555;
 }
-

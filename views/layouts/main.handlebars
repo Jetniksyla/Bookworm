@@ -1,46 +1,42 @@
-<!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>{{pageTitle}}</title>
     <!-- Include any necessary CSS files -->
-    <link rel="stylesheet" href="/css/style.css">
-    <link rel="stylesheet" href="/css/jass.css">
-    <link rel="stylesheet" href="/css/login-form.css">
-    <link rel="stylesheet" href="/css/signup-form.css">
-</head>
-<body>
-        <nav>
-        <!-- Conditionally render login or logout links -->
-        {{#if logged_in}}
-        <a href="/home">profile</a> |
+    <link rel="stylesheet" href="/css/style.css" />
+    <link rel="stylesheet" href="/css/jass.css" />
+    <link rel="stylesheet" href="/css/login-form.css" />
+    <link rel="stylesheet" href="/css/signup-form.css" />
+  </head>
+  <body>
+    <nav>
+      <!-- Conditionally render login or logout links -->
+      {{#if logged_in}}
+        <a href="/home">profile</a>
+        |
         <button class="button" id="logout">logout</button>
-        {{else}}
-        {{!-- <a href="/login">login</a> --}}
-        {{/if}}
-        </nav>
-        <nav>
-        <!-- Conditionally render login or logout links -->
-        {{#if sign_up}}
-        <a href="/home">profile</a> |
+      {{else}}
+        {{! <a href="/login">login</a> }}
+      {{/if}}
+    </nav>
+    <nav>
+      <!-- Conditionally render login or logout links -->
+      {{#if sign_up}}
+        <a href="/home">profile</a>
+        |
         <button class="button" id="logout">logout</button>
-        {{else}}
-        {{!-- <a href="/signup">login</a> --}}
-        {{/if}}
-        </nav>
+      {{else}}
+        {{! <a href="/signup">login</a> }}
+      {{/if}}
+    </nav>
 
     <div class="container">
-        {{{body}}}
-    </div>
-    <div>
-    {{!-- {{> login}} --}}
+      {{{body}}}
     </div>
 
-    <div>
-    {{!-- {{> signup}} --}}
-    </div>
-
-    {{> footer}}
-</body>
+    {{#if logged_in}}
+      <script src="/js/logout.js"></script>
+    {{/if}}
+  </body>
 </html>

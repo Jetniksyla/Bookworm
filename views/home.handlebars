@@ -19,12 +19,19 @@
         <br />
       </div>
       <div id="login-form-container"></div>
-      <a href="/login" class="nav-btn" id="login-btn">Login</a>
-      <a href="/signup" class="nav-btn" id="signup-btn">Sign-UP</a>
+
+      {{#if logged_in}}
+        <button class="nav-btn" id="logout">logout</button>
+      {{else}}
+        <a href="/login" class="nav-btn" id="login-btn">Login</a>
+        <a href="/signup" class="nav-btn" id="signup-btn">Sign-UP</a>
+      {{/if}}
+
     </nav>
 
     <div class="main-content">
-      <h1 class="book-search-title">📚  Boundless Finds: Discover Your Next Read  📚</h1>
+      <h1 class="book-search-title">📚 Boundless Finds: Discover Your Next Read
+        📚</h1>
       <div class="search-container">
         <input
           type="text"
@@ -35,10 +42,14 @@
       </div>
       <div id="book-container">
         <!-- Books will be added here by the JS script -->
+      
+      
       </div>
     </div>
-
     <!-- JS Script for Handling API and DOM Manipulation -->
     <script src="./js/homeAPI.js"></script>
+    {{#if logged_in}}
+      <script src="/js/logout.js"></script>
+    {{/if}}
   </body>
 </html>

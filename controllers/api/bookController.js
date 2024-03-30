@@ -35,10 +35,10 @@ router.get("/:id", async (req, res) => {
 // POST route to create a new book
 router.post("/", withAuth, async (req, res) => {
   try {
-    const { title, author, published_date, cover_image, description } =
+    const { title, author, cover_image, description } =
       req.body; // Adjusted field names
 
-    if (!title || !author || !published_date || !cover_image || !description) {
+    if (!title || !author || !cover_image || !description) {
       return res.status(400).json({
         message:
           "Please provide all required fields: title, author, published date, cover image, and description.",

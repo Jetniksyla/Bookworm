@@ -1,14 +1,24 @@
-const logout = async () => {
-  const response = await fetch('/api/users/logout', {
-    method: 'POST',
-    headers: { 'Content-Type': 'application/json' },
-  });
+console.log("JavaScript file loaded");
 
-  if (response.ok) {
-    document.location.replace('/login');
-  } else {
-    alert(response.statusText);
+const logout = async () => {
+  try {
+    console.log("Logout button clicked");
+    const response = await fetch("/api/users/logout", {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+    });
+
+    if (response.ok) {
+      document.location.replace("/login");
+    } else {
+      alert(response.statusText);
+    }
+  } catch (error) {
+    console.error("Error during logout:", error);
+    alert("An error occurred during logout.");
   }
 };
 
-document.querySelector('#logout').addEventListener('click', console.log("hello"));
+const logoutButton = document.querySelector("#logout-btn");
+
+logoutButton.addEventListener("click", logout);

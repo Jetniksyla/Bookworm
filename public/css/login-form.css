@@ -16,14 +16,16 @@
   border-radius: 5px;
   box-sizing: border-box;
   font-size: 25px;
-  background-color: #343438
+  border-color: rgb(100, 93, 83);
+  background-color: rgb(33, 35, 37);
+  color: rgb(232, 230, 227);
 }
 
 /* Style form labels for login form */
 #loginForm label {
   margin-bottom: 5px;
   font-size: 30px;
-  color: #fff
+  color: rgb(232, 230, 227);
 }
 
 /* Style submit button for login form */
@@ -32,7 +34,7 @@
   padding: 10px;
   margin-top: 10px;
   background-color: #0d56a5;
-  color: #fff;
+  color: rgb(232, 230, 227);
   border: none;
   border-radius: 5px;
   cursor: pointer;
@@ -45,7 +47,7 @@
   display: block;
   text-align: center;
   margin: 10px 0;
-  color: #fff;
+  color: rgb(232, 230, 227);
   font-size: 30px;
 }
 
@@ -69,5 +71,5 @@
   text-align: center;
   margin-bottom: 20px;
   font-size: 140px;
-  color: #fff
+  color: rgb(232, 230, 227);
 }

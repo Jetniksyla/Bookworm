@@ -61,7 +61,7 @@ router.get("/user", async (req, res) => {
   res.json(userFind);
 });
 
-router.get("/favorites", withAuth, async (req, res) => {
+router.get("/favorites", async (req, res) => {
   try {
     const newFavorites = await User.findByPk(req.session.userId, {
       attributes: { exclude: ["password"] },

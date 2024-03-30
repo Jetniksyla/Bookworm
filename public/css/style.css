@@ -6,8 +6,15 @@ body {
   margin: 0;
 }
 
-.book-search-title {
+.main-content span {
+  color: brown;
+  font-size: 53px;
+  text-decoration: underline;
   font-family: 'Georgia', serif;
+}
+
+.book-search-title {
+  font-family: monospace;
   font-size: 40px;
   color: #6d4a50;
   text-align: center;
@@ -17,7 +24,6 @@ body {
   border-bottom: 2px solid #D3BCC0;
   padding-bottom: 20px;
   /* background-image: url('/images/banned-books.jpg'); Add the path to your image */
-
 }
 
 #navbar {
@@ -27,7 +33,7 @@ body {
   width: 250px;
   height: 100vh;
   background-color: #052546;
-  color: #fff;
+  color: rgb(232, 230, 227);
   display: flex;
   flex-direction: column;
   padding: 20px;
@@ -40,6 +46,7 @@ body {
   padding: 20px;
   position: relative;
   z-index: 1;
+  height: 100%;
 }
 
 .link-container {
@@ -56,7 +63,7 @@ body {
   justify-content: center;
   align-items: center;
   font-size: 23px;
-  color: #fff;
+  color: rgb(232, 230, 227);
   border-radius: 4px;
   background: #3e78a7;
 }
@@ -85,12 +92,26 @@ body {
   margin-bottom: 10px;
   padding: 10px 20px;
   background-color: #0a417d;
-  color: #fff;
+  color: rgb(228, 227, 232);
   text-decoration: none;
   border-radius: 4px;
   transition: background-color 0.3s;
   height: 50px;
   display: flex;
+  align-items: center;
+  font-size: x-large;
+}
+
+.homepage {
+  padding: 10px 20px;
+  background-color: #0a417d;
+  color: rgb(228, 227, 232);
+  text-decoration: none;
+  border-radius: 4px;
+  transition: background-color 0.3s;
+  height: 50px;
+  display: flex;
+  justify-content: space-between;
   align-items: center;
   font-size: x-large;
 }
@@ -124,8 +145,8 @@ body {
   top: 2px;
   height: calc(100% - 4px);
   border: none;
-  background-color: rgb(0, 98, 204);
-  color: #fff;
+  background-color: rgb(0, 78, 163);
+  color: rgb(216, 212, 207);
   border-radius: 4px 0 0 4px;
   cursor: pointer;
   width: 110px;
@@ -137,10 +158,10 @@ body {
 #search-button:hover,
 #search-button:focus {
   outline: none;
-  border-color: #2a73c2;
-  background-color: #0056b3;
+  border-color: #2776ca;
   box-shadow: 0 0 0 2px rgba(0, 86, 179, 0.25);
 }
+
 
 #search-input::placeholder {
   color: #888;
@@ -165,7 +186,7 @@ body {
   text-align: center;
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
   border-radius: 8px;
-  background-color: #fff;
+  background-color: rgb(232, 230, 227);
   overflow: hidden;
   padding: 10px;
 }
@@ -199,7 +220,8 @@ body {
   width: calc(100% - 20px);
   padding: 10px;
   background-color: #007bff;
-  color: #fff;
+  color: rgb(232, 230, 227);
+  ;
   border: none;
   cursor: pointer;
 }

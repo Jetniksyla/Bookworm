@@ -75,4 +75,4 @@ This application is deployed on Heroku. You can access it [here](https://heroku.
 Special thanks to everyone who has contributed to making this project a success. 
 
 ## License
-This project is released under the [MIT License](/LICENSE).
+This project is released under the [Apache License Version 2.0, January 2004](/LICENSE).

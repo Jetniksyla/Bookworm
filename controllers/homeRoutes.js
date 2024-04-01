@@ -50,33 +50,54 @@ router.get("/signup", (req, res) => {
   }
 });
 
-router.get("/user", async (req, res) => {
-  const userFind = await User.findAll({
-    include: [
-      {
-        model: Book,
-      },
-    ],
-  });
-  res.json(userFind);
-});
+// router.get("/favorites", async (req, res) => {
+//   if (!req.session.userId) {
+//     return res.redirect("/login");
+//   }
+
+//   try {
+//     const userData = await User.findByPk(req.session.userId, {
+//       include: [{ model: Book, as: "books" }],
+//     });
+
+//     if (!userData) {
+//       return res.status(404).send("No user found with this id!");
+//     }
+
+//     const user = userData.get({ plain: true });
+
+//     console.log(user.books);
+//     res.render("favorites", {
+//       books: user.books,
+//       logged_in: req.session.loggedIn || false,
+//     });
+//   } catch (err) {
+//     console.error(err);
+//     res.status(500).json(err);
+//   }
+// });
 
 router.get("/favorites", async (req, res) => {
   try {
-    const newFavorites = await User.findByPk(req.session.userId, {
-      attributes: { exclude: ["password"] },
-      include: [{ model: Book }],
+    console.log("Session User ID:", req.session.userId);
+    const userData = await User.findByPk(req.session.userId, {
+      include: ["books"], // Adjust based on actual association
     });
-    if (!newFavorites) {
-      return res.status(404).json({ message: "No user found with this id!" });
+    console.log("Fetched userData:", userData);
+
+    if (userData) {
+      const user = userData.get({ plain: true });
+      console.log("User with Books:", user);
+      res.render("favorites", {
+        books: user.books || [],
+        logged_in: req.session.loggedIn || false,
+      });
+    } else {
+      res.status(404).send("No user found with this id!");
     }
-    const user = newFavorites.get({ plain: true });
-    res.render("favorites", {
-      ...user,
-      logged_in: true,
-    });
   } catch (err) {
-    res.json(err);
+    console.error(err);
+    res.status(500).json(err);
   }
 });
 

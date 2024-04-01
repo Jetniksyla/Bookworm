@@ -34,12 +34,12 @@ Review.init(
     createdAt: {
       type: DataTypes.DATE,
       allowNull: false,
-      defaultValue: DataTypes.NOW, // Default value to the current date and time
+      defaultValue: DataTypes.NOW, 
     },
     updatedAt: {
       type: DataTypes.DATE,
       allowNull: false,
-      defaultValue: DataTypes.NOW, // Automatically update with current date and time whenever a record is updated
+      defaultValue: DataTypes.NOW, 
     },
   },
   {

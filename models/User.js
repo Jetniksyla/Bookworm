@@ -1,5 +1,4 @@
 // models/User.js
-
 const { Model, DataTypes } = require("sequelize");
 const sequelize = require("../config/connection");
 const bcrypt = require("bcrypt");
@@ -13,7 +12,6 @@ class User extends Model {
 
 User.init(
   {
-    // Model attributes
     id: {
       type: DataTypes.INTEGER,
       allowNull: false,
@@ -46,12 +44,10 @@ User.init(
   },
   {
     hooks: {
-      // Before creating a new user
       async beforeCreate(newUserData) {
         newUserData.password = await bcrypt.hash(newUserData.password, 10);
         return newUserData;
       },
-      // Before updating user password
       async beforeUpdate(updatedUserData) {
         if (updatedUserData.password) {
           updatedUserData.password = await bcrypt.hash(

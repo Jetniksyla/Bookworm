@@ -1,0 +1,201 @@
+#carousel {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  height: 85vh;
+}
+
+.image-container {
+  max-height: 80vh;
+  text-align: center;
+  width: 80%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin: 20px;
+  overflow: hidden;
+  position: relative;
+  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.2), 0 0 60px rgba(0, 0, 0, 0.1) inset;
+  border: solid 4px transparent;
+  border-radius: 10px;
+  background-image: linear-gradient(white, white), radial-gradient(circle at top left, #007bff, #0056b3);
+  background-origin: border-box;
+  background-clip: content-box, border-box;
+}
+
+
+#carousel .nav-btn {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 50px;
+  height: 120px;
+  background-color: rgba(255, 255, 255, 0.8);
+  color: #007bff;
+  border: 2px solid #007bff;
+  font-size: 20px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: all 0.3s ease;
+  border-radius: 30px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+  cursor: pointer;
+}
+
+#carousel #back {
+  left: 30px;
+}
+
+#carousel #next {
+  right: 30px;
+}
+
+#carousel .nav-btn:hover {
+  background-color: #007bff;
+  color: white;
+  border-color: #0056b3;
+}
+
+#carousel .image-container {
+  max-height: 80vh;
+  width: 85%;
+  display: flex;
+  justify-content: space-evenly;
+  align-items: center;
+  border: 2px solid transparent;
+  border-color: transparent;
+  background-color: initial;
+  background-image: linear-gradient(rgb(27 27 131), rgb(30 30 38)), linear-gradient(to right, rgb(4, 76, 157), rgb(13 101 82));
+  box-shadow: rgba(4, 6, 6, 3.2) 4px 19px 32px, rgba(5, 4, 6, 8.1) 4px 10px 18px;
+  overflow: hidden;
+  border-radius: 15px;
+  position: relative;
+
+  flex-wrap: wrap;
+}
+
+.carousel-image {
+  max-height: calc(80vh - 50px);
+  max-width: 100%;
+  margin-left: 30px;
+  padding: 20px;
+  border-radius: 30px;
+  border: none;
+}
+
+#carousel .nav-btn1,
+#carousel .nav-btn2 {
+  display: none;
+  transform: translateY(240%);
+  width: 40px;
+  height: 68px;
+  background-color: rgba(255, 255, 255, 0.8);
+  color: #007bff;
+  border: 2px solid #007bff;
+  font-size: 20px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: all 0.3s ease;
+  border-radius: 30px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+  cursor: pointer;
+}
+
+.image-container1,
+.image-container2 {
+  display: flex;
+  width: 400px;
+  height: 420px;
+  flex-wrap: wrap;
+  align-content: center;
+  margin: 25px 0;
+  transition: opacity 1s ease, visibility 1s ease;
+
+}
+
+.image-container1 img,
+.image-container2 img {
+  object-fit: cover;
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+  border-radius: 20px;
+  margin: 25px 0;
+  transition: opacity 1s ease, visibility 1s ease;
+
+}
+/* 
+.carousel-image, .carousel-image1, .carousel-image2 {
+  transition: opacity 1s ease, visibility 1s ease;
+  position: relative;
+  opacity: 0;
+  top: 0;
+  left: 0;
+  visibility: hidden;
+}
+
+.visible {
+  opacity: 1;
+  visibility: visible;
+} */
+
+
+/*
+
+let currentImageIndex = 0;
+const images = document.querySelectorAll(".carousel-image");
+const totalImages = images.length;
+
+function showImage(index) {
+  images.forEach((img, idx) => {
+    if (idx === index) {
+      img.classList.add("visible");
+    } else {
+      img.classList.remove("visible");
+    }
+  });
+}
+
+document.getElementById("next").addEventListener("click", function () {
+  currentImageIndex = (currentImageIndex + 1) % totalImages;
+  showImage(currentImageIndex);
+});
+
+document.getElementById("back").addEventListener("click", function () {
+  currentImageIndex = (currentImageIndex - 1 + totalImages) % totalImages;
+  showImage(currentImageIndex);
+});
+
+// Automatically move to the next image every 3-4 seconds
+setInterval(function () {
+  currentImageIndex = (currentImageIndex + 1) % totalImages;
+  showImage(currentImageIndex);
+}, 5000);
+
+showImage(currentImageIndex); // Display the first image
+
+//------------------------------------------------------------------------------------
+
+  document.addEventListener('DOMContentLoaded', (event) => {
+    // Function to change the image in a container
+    function changeImage(containerSelector) {
+      const images = document.querySelectorAll(containerSelector);
+      let visibleImgIndex = Array.from(images).findIndex(img => img.classList.contains("carousel-image"));
+      
+      // Hide current, show next with wrap-around
+      const nextImgIndex = (visibleImgIndex + 1) % images.length;
+      images.forEach((img, idx) => {
+        if (idx === nextImgIndex) {
+          img.classList.add("visible");
+        } else {
+          img.classList.remove("visible");
+        }
+      });
+    }
+    // Set intervals for both containers
+    setInterval(() => changeImage('.image-container1 .carousel-image1'), 1300);
+    setInterval(() => changeImage('.image-container2 .carousel-image2'), 1500);
+  });

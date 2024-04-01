@@ -346,3 +346,15 @@ body {
 .footer .contact-us input:focus{
   box-shadow: 0 0 20px rgba(255,255,255,0.5);
 }
+
+@media (max-width: 480px) {
+  nav {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+}
+
+nav a {
+  margin:10px 0;
+  
+}

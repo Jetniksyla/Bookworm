@@ -19,16 +19,6 @@
   <body>
     <nav>
       <!-- Conditionally render login or logout links -->
-      {{#if logged_in}}
-        <a href="/home">profile</a>
-        |
-        <button class="button" id="logout">logout</button>
-      {{else}}
-        {{! <a href="/login">login</a> }}
-      {{/if}}
-    </nav>
-    <nav>
-      <!-- Conditionally render login or logout links -->
       {{#if sign_up}}
         <a href="/home">profile</a>
         |
@@ -55,3 +45,4 @@
     <script src="./js/homeAPI.js"></script>
   </body>
 </html>
+

@@ -5,7 +5,7 @@
     <title>Book Search</title>
     <!-- Add any additional head content here (e.g., CSS links) -->
   
-  </head>
+  </head> 
   <body>
 <div class="nav-container">
       <a href="/" class="nav-btn">Home</a>
@@ -15,7 +15,8 @@
     </div>
 
     <div class="main-content">
-      <h1 class="book-search-title">📚  Boundless Finds: Discover Your Next Read  📚</h1>
+      <h1 class="book-search-title">📚 Boundless Finds: Discover Your <span> Next Read</span> 
+        📚</h1>
       <div class="search-container">
         <input
           type="text"
@@ -50,5 +51,8 @@
     ></script>
     <!-- JS Script for Handling API and DOM Manipulation -->
     <script src="./js/homeAPI.js"></script>
+    {{#if logged_in}}
+      <script src="/js/logout.js"></script>
+    {{/if}}
   </body>
 </html>

@@ -14,18 +14,11 @@ router.post("/", async (req, res) => {
     }
 
     // Proceed with creating a new user if the email doesn't exist
-    const newUser = await User.create({
-      username: req.body.username,
-      lastname: req.body.lastname, // Ensure all relevant fields are included
-      email: req.body.email,
-      password: req.body.password, // Password will be hashed by the beforeCreate hook in the model
-    });
-
-    // Respond with the new user's data, excluding the password
-    res.status(201).json({
-      id: newUser.id,
-      username: newUser.username,
-      email: newUser.email,
+    const newUser = await User.create(req.body);
+    req.session.save(() => {
+      req.session.userId = newUser.id;
+      req.session.loggedIn = true;
+      res.status(200).json(newUser);
     });
   } catch (error) {
     console.error("Error creating user:", error);
@@ -54,7 +47,7 @@ router.post("/login", async (req, res) => {
 
     // If the email and password are correct, create a session
     req.session.save(() => {
-      req.session.userId = user.id; // Correctly reference user.id
+      req.session.userId = user.id;
       req.session.loggedIn = true;
 
       res.json({
@@ -81,8 +74,6 @@ router.post("/logout", (req, res) => {
 });
 
 module.exports = router;
-
-
 
 
 

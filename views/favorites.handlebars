@@ -1,0 +1,20 @@
+<div class="homepage">
+  <a class="homepage" href="http://localhost:3001/">Homepage</a>
+</div>
+{{#if books.length}}
+  <h2>Favorites</h2>
+
+  {{#each books as |book|}}
+
+    <div id="book-container">
+      <div class="card">
+        <h2>{{book.title}}</h2>
+        <p>{{book.author}}</p>
+        <img src={{book.cover_image}} alt={{book.title}} />
+        <p>{{book.description}}</p>
+      </div>
+    </div>
+
+  {{/each}}
+
+{{/if}}

@@ -70,15 +70,30 @@ body {
   background: #3e78a7;
 }
 
+#logout-btn {
+  margin-bottom: 60px;
+  margin-top: 27px;
+  height: 110px;
+  text-align: center;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 43px;
+  background: rgb(232, 230, 227);
+  border-radius: 20px;
+  color: #092841;
+  cursor: pointer;
+}
+
 #login-btn:hover,
 #login-btn:focus {
-  background-color: #4e4d77;
+  background-color: #3a5370;
   outline: none;
 }
 
 #signup-btn:hover,
 #signup-btn:focus {
-  background-color: rgb(34, 32, 32);
+  background-color: #3a5370;
   outline: none;
 }
 
@@ -174,24 +189,33 @@ body {
 #search-button:hover,
 #search-button:focus {
   outline: none;
-  border-color: #2776ca;
-  box-shadow: 0 0 0 2px rgba(0, 86, 179, 0.25);
+  border-color: #1263b9;
+  box-shadow: 0 0 0 1px rgba(1, 186, 209, 0.75);
+  transition: box-shadow 0.3s ease;/
 }
 
-
 #search-input::placeholder {
-  color: #888;
+  color: #c3c2c2;
   font-style: italic;
   font-size: 22px;
 }
 
+.next-btn-container .next-page-btn {
+  display: flex;
+  width: fit-content;
+  height: auto;
+  background-color: none;
+  color: brown;
+  border: none;
+  font-size: 100px;
+}
 
 #book-container {
   display: row;
   flex-wrap: wrap;
-  gap: 20px;
+  gap: 30px;
   justify-content: center;
-  padding: 20px;
+  padding: 30px 20px;
 }
 
 .card {
@@ -212,18 +236,21 @@ body {
   height: auto;
   object-fit: cover;
   align-self: stretch;
+  height: 300px;
+  margin: 10px 0;
 }
 
 .card h2,
 .card p,
 .card button {
   padding: 0 10px;
+  height: 40px;
 }
 
 .card p {
   display: block;
   overflow-y: auto;
-  height: 4.5em;
+  height: 96px;
   margin-top: auto;
   width: 100%;
   box-sizing: border-box;
@@ -237,7 +264,6 @@ body {
   padding: 10px;
   background-color: #007bff;
   color: rgb(232, 230, 227);
-  ;
   border: none;
   cursor: pointer;
 }

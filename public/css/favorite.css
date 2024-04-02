@@ -1,0 +1,97 @@
+.favorites {
+  width: 90%;
+  display: flex;
+  flex-direction: column;
+  background-color: #052546;
+  padding: 30px;
+  height: auto;
+  overflow-y: auto;
+  align-items: center;
+  justify-content: flex-start;
+  margin: 30px auto;
+  font-size: 18px;
+  color: white;
+  border-radius: 15px;
+}
+
+.book-list {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 20px;
+  justify-content: center;
+  width: 100%;
+}
+
+.book {
+  width: 300px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  border-radius: 8px;
+  background-color: rgb(232, 230, 227);
+  overflow: hidden;
+  padding: 20px;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.book:hover {
+  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+  transform: translateY(-10px);
+}
+
+.book img {
+  width: 100%;
+  height: auto;
+  object-fit: cover;
+  margin-bottom: 15px;
+  border-radius: 5px;
+}
+
+.book h2 {
+  width: 100%;
+  margin: 0;
+  padding: 4px 8px;
+  text-align: left;
+}
+
+.book h2 {
+  font-size: 1.2em;
+  color: #333;
+  margin-bottom: 5px;
+}
+
+.book p {
+  font-size: 0.9em;
+  color: #555;
+  line-height: 1.4;
+  overflow-y: auto;
+}
+
+.book span {
+  height: 200px;
+}
+
+.oneBook {
+  padding: 8px 16px;
+  background-color: #ff4d4f;
+  color: white;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  transition: background-color 0.3s;
+  font-size: 14px;
+  text-align: center;
+  display: inline-block;
+  text-decoration: none;
+}
+
+.oneBook:hover {
+  background-color: #ff7875;
+}
+
+.oneBook:focus {
+  outline: 2px solid #ff4d4f;
+  outline-offset: 2px;
+}

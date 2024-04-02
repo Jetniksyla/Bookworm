@@ -34,11 +34,11 @@ router.get("/:id", async (req, res) => {
 
 // POST route to create a new book
 router.post("/", withAuth, async (req, res) => {
+  console.log(req.body);
   try {
-    const { title, author, cover_image, description } =
-      req.body; // Adjusted field names
+    const { title, author, img, description, publishedDate } = req.body; 
 
-    if (!title || !author || !cover_image || !description) {
+    if (!title || !author || !img || !description  || !publishedDate) {
       return res.status(400).json({
         message:
           "Please provide all required fields: title, author, published date, cover image, and description.",
@@ -46,7 +46,11 @@ router.post("/", withAuth, async (req, res) => {
     }
 
     const newBook = await Book.create({
-      ...req.body,
+      title: title,
+      author: author,
+      cover_image: img,
+      description: description,
+      published_date: publishedDate,
       user_id: req.session.userId,
     });
 

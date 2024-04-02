@@ -3,9 +3,13 @@ const { Book, User } = require("../models");
 const { loginUser } = require("./api/userController");
 const withAuth = require("../utils/withAuth");
 
-router.get("/", async (req, res) => {
+router.get("/", (req, res) => {
+  console.log(req.session.loggedIn);
   try {
-    res.render("home", { logged_in: req.session.loggedIn });
+    res.render("home", {
+      logged_in: req.session.loggedIn,
+      user_id: req.session.userId,
+    });
   } catch (err) {
     console.log(err);
     res.status(500).json({ message: "Error getting all users" });
@@ -50,51 +54,27 @@ router.get("/signup", (req, res) => {
   }
 });
 
-// router.get("/favorites", async (req, res) => {
-//   if (!req.session.userId) {
-//     return res.redirect("/login");
-//   }
-
-//   try {
-//     const userData = await User.findByPk(req.session.userId, {
-//       include: [{ model: Book, as: "books" }],
-//     });
-
-//     if (!userData) {
-//       return res.status(404).send("No user found with this id!");
-//     }
-
-//     const user = userData.get({ plain: true });
-
-//     console.log(user.books);
-//     res.render("favorites", {
-//       books: user.books,
-//       logged_in: req.session.loggedIn || false,
-//     });
-//   } catch (err) {
-//     console.error(err);
-//     res.status(500).json(err);
-//   }
-// });
-
 router.get("/favorites", async (req, res) => {
-  try {
-    console.log("Session User ID:", req.session.userId);
-    const userData = await User.findByPk(req.session.userId, {
-      include: ["books"], // Adjust based on actual association
-    });
-    console.log("Fetched userData:", userData);
+  if (!req.session.userId) {
+    return res.redirect("/login");
+  }
 
-    if (userData) {
-      const user = userData.get({ plain: true });
-      console.log("User with Books:", user);
-      res.render("favorites", {
-        books: user.books || [],
-        logged_in: req.session.loggedIn || false,
-      });
-    } else {
-      res.status(404).send("No user found with this id!");
+  try {
+    const userData = await User.findByPk(req.session.userId, {
+      include: [{ model: Book, as: "books" }],
+    });
+
+    if (!userData) {
+      return res.status(404).send("No user found with this id!");
     }
+
+    const user = userData.get({ plain: true });
+
+    console.log(user.books);
+    res.render("favorites", {
+      books: user.books,
+      logged_in: req.session.loggedIn || false,
+    });
   } catch (err) {
     console.error(err);
     res.status(500).json(err);

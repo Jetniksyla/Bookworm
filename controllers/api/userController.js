@@ -75,31 +75,14 @@ router.post("/logout", (req, res) => {
 
 module.exports = router;
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-router.get('/login', (req, res) => {
+router.get("/login", (req, res) => {
   // If the user is already logged in, redirect the request to another route
   if (req.session.logged_in) {
-    res.redirect('/home');
+    res.redirect("/home");
     return;
   }
 
-  res.render('login');
+  res.render("login");
 });
 
 router.post("/login", async (req, res) => {
@@ -133,7 +116,7 @@ router.post("/login", async (req, res) => {
   }
 });
 
-router.post('/logout', (req, res) => {
+router.post("/logout", (req, res) => {
   if (req.session.logged_in) {
     req.session.destroy(() => {
       res.status(204).end();

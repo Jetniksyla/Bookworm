@@ -81,4 +81,12 @@ router.get("/favorites", async (req, res) => {
   }
 });
 
+router.get("/contactForm", async (req, res) => {
+  res.render("contactForm");
+});
+
+router.post("/", (req, res) => {
+  res.redirect("http://localhost:3001/");
+});
+
 module.exports = router;

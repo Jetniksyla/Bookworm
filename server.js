@@ -32,13 +32,9 @@ const sess = {
 app.use(session(sess));
 
 // Configure Handlebars engine
-app.engine(
-  "handlebars",
-  hbs.engine 
-);
-app.set("view engine", "handlebars"); 
-app.set("views", path.join(__dirname, "views")); 
-
+app.engine("handlebars", hbs.engine);
+app.set("view engine", "handlebars");
+app.set("views", path.join(__dirname, "views"));
 
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
@@ -50,72 +46,3 @@ app.use(routes);
 sequelize.sync({ force: false }).then(() => {
   app.listen(PORT, () => console.log(`Now listening on ${PORT}`));
 });
-
-
-
-
-
-
-
-
-
-/* Layout
-│
-├── config/
-│   └── connection.js
-│
-├── controllers/
-│   ├── api/
-│   │   ├── bookController.js
-│   │   ├── reviewController.js
-│   │   └── userController.js
-│   ├──homeRoutes.js 
-│   └── index.js
-│
-├── db/
-│   └── schema.sql
-│
-├── models/
-│   ├── Book.js
-│   ├── index.js
-│   ├── User.js
-│   └── Review.js
-│
-├── node_modules
-│
-├── public/
-│   ├── css/
-│   │   ├── sass.css
-│   │   └── style.css
-│   └── js/
-│       ├── homeAPI.js
-│       ├── login.js
-│       └── signup.js
-│
-├── seeds/
-│   ├── bookData.json
-│   ├── index.js
-│   ├── reviewData.json
-│   └── userData.json
-│
-├── utils/
-│   └── helpers.js
-│
-├── views/
-│   ├── layouts/
-│   │   └── main.handlebars
-│   ├── partials/
-│   │   ├── login.handlebars
-│   │   └── footer.handlebars
-│   └── home.handlebars
-│
-├── .env
-├── .envEXAMPLE
-├── .gitignore
-├── LICENSE
-├── package-lock.json
-├── package.json
-├── server.js
-└── package.json
-
-*/

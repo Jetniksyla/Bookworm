@@ -69,7 +69,7 @@ This application is deployed on Heroku. You can access it [here](https://heroku.
 - **Jayson Nunez** - *Initial work* - [GitHub](https://github.com/JaysonNunez1)
 - **Jetnik Syla** - *Initial work* - [GitHub](https://github.com/Jetniksyla)
 - **Katy Totah** - *Initial work* - [GitHub](https://github.com/ktotah)
-- **Kim Tung** - *Initial work* - [GitHub](https://github.com/)
+- **Kim Tung** - *Initial work* - [GitHub](https://github.com/ktung2018)
 - **Owen Wang** - *Initial work* - [GitHub](https://github.com/owen8955)
 
 Special thanks to everyone who has contributed to making this project a success. 

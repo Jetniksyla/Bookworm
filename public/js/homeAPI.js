@@ -1,85 +1,156 @@
 document.addEventListener("DOMContentLoaded", function () {
   document
     .getElementById("search-button")
-    .addEventListener("click", function () {
-      const searchInput = document.getElementById("search-input").value.trim();
-      if (!searchInput) {
-        console.log("Please enter a search term.");
+    .addEventListener("click", searchBook);
+});
+
+function searchBook(item) {
+  const searchInput = document.getElementById("search-input").value.trim();
+  document.getElementById("carousel").style.display = "none";
+
+  if (!searchInput) {
+    console.log("Please enter a search term.");
+    return;
+  }
+
+  const apiKey = "AIzaSyDbvvldgLOtmAV7OTzP0cTBAdKhU_AzCh4";
+  const apiUrl = `https://www.googleapis.com/books/v1/volumes?q=intitle:${encodeURIComponent(
+    searchInput
+  )}&key=${apiKey}`;
+
+  fetch(apiUrl)
+    .then((response) => {
+      if (!response.ok) {
+        throw new Error("Network response was not ok");
+      }
+      return response.json();
+    })
+    .then((data) => {
+      const bookContainer = document.getElementById("book-container");
+      bookContainer.innerHTML = "";
+
+      if (!data.items || data.items.length === 0) {
+        bookContainer.innerHTML =
+          "<p style='color: red; font-size: 26px;'>No books found with that title. Try another search query.</p>";
         return;
       }
+      data.items.forEach((item) => {
+        const card = document.createElement("div");
+        card.setAttribute("class", "card");
 
-      const apiKey = "AIzaSyDbvvldgLOtmAV7OTzP0cTBAdKhU_AzCh4";
-      const apiUrl = `https://www.googleapis.com/books/v1/volumes?q=intitle:${encodeURIComponent(
-        searchInput
-      )}&key=${apiKey}`;
+        const cardTitle = document.createElement("h2");
+        cardTitle.textContent = item.volumeInfo.title;
 
-      fetch(apiUrl)
-        .then((response) => {
-          if (!response.ok) {
-            throw new Error("Network response was not ok");
-          }
-          return response.json();
-        })
-        .then((data) => {
-          const bookContainer = document.getElementById("book-container");
-          bookContainer.innerHTML = ""; // Clear previous results
+        const cardImage = document.createElement("img");
+        if (
+          item.volumeInfo.imageLinks &&
+          item.volumeInfo.imageLinks.thumbnail
+        ) {
+          cardImage.setAttribute("src", item.volumeInfo.imageLinks.thumbnail);
+        }
 
-          if (!data.items || data.items.length === 0) {
-            bookContainer.innerHTML =
-              "<p>No books found with that title. Try another search query.</p>";
-            return;
-          }
+        const description = document.createElement("p");
+        // Concatenate author and description into one string with a line break
+        const authorText = item.volumeInfo.authors
+          ? `Author: ${item.volumeInfo.authors.join(", ")}`
+          : "Author: Unknown";
+        const descriptionText =
+          item.volumeInfo.description || "No description available.";
+        description.innerHTML = `${authorText}<br> <br>${descriptionText}`; 
 
-          data.items.forEach((item) => {
-            const card = document.createElement("div");
-            card.setAttribute("class", "card");
+        const favoriteBtn = document.createElement("button");
+        favoriteBtn.textContent = "Add to Favorites";
 
-            const cardTitle = document.createElement("h2");
-            cardTitle.textContent = item.volumeInfo.title;
+        const nextBtn = document.createElement("button");
+        nextBtn.setAttribute("id", "nextPage");
+        nextBtn.setAttribute("onclick", "getNextPage()");
+        nextBtn.textContent = "Load More";
 
-            const cardAuthor = document.createElement("p");
-            cardAuthor.textContent = item.volumeInfo.authors
-              ? `Author(s): ${item.volumeInfo.authors.join(", ")}`
-              : "Author(s): Unknown";
+        // Backend  Logic ------------------------------------------------
 
-            const cardImage = document.createElement("img");
-            if (
-              item.volumeInfo.imageLinks &&
-              item.volumeInfo.imageLinks.thumbnail
-            ) {
-              cardImage.setAttribute(
-                "src",
-                item.volumeInfo.imageLinks.thumbnail
-              );
-            }
+        favoriteBtn.addEventListener("click", () =>
+        handleFavorites(
+            item.volumeInfo.title,
+            item.volumeInfo.imageLinks?.thumbnail,
+            item.volumeInfo.authors?.join(", "),
+            item.volumeInfo.description || "No description available.",
+            item.volumeInfo.publishedDate || "No public date available"
+          )
+        );
 
-            const description = document.createElement("p");
-            description.textContent =
-              item.volumeInfo.description || "No description available.";
-            // Favorite btn for favorite books
-            const favoriteBtn = document.createElement("button");
-            favoriteBtn.textContent = "Add to Favorites";
-            favoriteBtn.addEventListener("click", function () {
-              addToFavorites(item); // this function sends data to your backend
-            });
-
-            card.appendChild(cardTitle);
-            if (cardImage.src) {
-              // Only append if the src was set
-              card.appendChild(cardImage);
-            }
-            card.appendChild(cardAuthor);
-            card.appendChild(description);
-            card.appendChild(favoriteBtn);
-            bookContainer.appendChild(card);
-          });
-        })
-        .catch((error) => {
-          console.error("Error:", error);
-        });
+        card.appendChild(cardTitle);
+        if (cardImage.src) {
+          card.appendChild(cardImage);
+        }
+        card.appendChild(description);
+        card.appendChild(favoriteBtn);
+        bookContainer.appendChild(card);
+      });
+    })
+    .catch((error) => {
+      console.error("Error:", error);
     });
-});
-function addToFavorites(item) {
-
-  console.log("Adding to favorites:", item);
 }
+async function handleFavorites(title, img, author, description, publishedDate) {
+  console.log(title);
+
+  const response = await fetch("/api/books", {
+    method: "POST",
+    body: JSON.stringify({ title, img, author, description, publishedDate }),
+    headers: { "Content-Type": "application/json" },
+  });
+  if (response.ok) {
+    console.log("Your book has been added to favorites.");
+  } else {
+
+    alert(`Failed to add to favorites`);
+  }
+}
+
+// ------------------------------ Carousel  --  Functions ----------------------------
+
+let currentImageIndex = 0;
+const images = document.querySelectorAll(".carousel-image");
+const totalImages = images.length;
+
+function showImage(index) {
+  images.forEach((img, idx) => {
+    img.style.display = idx === index ? "block" : "none";
+  });
+}
+
+document.getElementById("next").addEventListener("click", function () {
+  currentImageIndex = (currentImageIndex + 1) % totalImages;
+  showImage(currentImageIndex);
+});
+
+document.getElementById("back").addEventListener("click", function () {
+  currentImageIndex = (currentImageIndex - 1 + totalImages) % totalImages;
+  showImage(currentImageIndex);
+});
+
+setInterval(function () {
+  currentImageIndex = (currentImageIndex + 1) % totalImages;
+  showImage(currentImageIndex);
+}, 4500);
+
+showImage(currentImageIndex);
+
+document.addEventListener("DOMContentLoaded", (event) => {
+  function changeImage(containerSelector) {
+    const images = document.querySelectorAll(containerSelector);
+    let visibleImgIndex = -1;
+    images.forEach((img, index) => {
+      if (img.style.display === "block") {
+        img.style.display = "none";
+        visibleImgIndex = index;
+      }
+    });
+
+    const nextImgIndex = (visibleImgIndex + 1) % images.length;
+    images[nextImgIndex].style.display = "block";
+  }
+
+  setInterval(() => changeImage(".image-container1 .carousel-image1"), 4750);
+  setInterval(() => changeImage(".image-container2 .carousel-image2"), 5000);
+});

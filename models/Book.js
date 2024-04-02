@@ -1,5 +1,4 @@
 // models/Book.js
-
 const { Model, DataTypes } = require("sequelize");
 const sequelize = require("../config/connection");
 
@@ -24,7 +23,7 @@ Book.init(
       type: DataTypes.STRING,
       allowNull: false,
       validate: {
-        len: [1, 255], // Example: requires title length to be between 1 and 255 characters
+        len: [1, 255],
       },
     },
     author: {
@@ -35,7 +34,7 @@ Book.init(
       type: DataTypes.DATEONLY,
       allowNull: false,
       validate: {
-        isDate: true, // Checks for a valid date format
+        isDate: true,
       },
     },
     cover_image: {

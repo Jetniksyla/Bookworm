@@ -1,5 +1,6 @@
 const router = require("express").Router();
 const { Review, User, Book } = require("../../models");
+const withAuth = require("../../utils/withAuth");
 
 router.get("/", async (req, res) => {
   try {
@@ -32,12 +33,12 @@ router.get("/:id", async (req, res) => {
 });
 
 // POST route to create a new book
-router.post("/", async (req, res) => {
+router.post("/", withAuth, async (req, res) => {
+  console.log(req.body);
   try {
-    const { title, author, published_date, cover_image, description } =
-      req.body; // Adjusted field names
+    const { title, author, img, description, publishedDate } = req.body; 
 
-    if (!title || !author || !published_date || !cover_image || !description) {
+    if (!title || !author || !img || !description  || !publishedDate) {
       return res.status(400).json({
         message:
           "Please provide all required fields: title, author, published date, cover image, and description.",
@@ -45,11 +46,12 @@ router.post("/", async (req, res) => {
     }
 
     const newBook = await Book.create({
-      title,
-      author,
-      published_date,
-      cover_image,
-      description,
+      title: title,
+      author: author,
+      cover_image: img,
+      description: description,
+      published_date: publishedDate,
+      user_id: req.session.userId,
     });
 
     res.status(201).json(newBook);

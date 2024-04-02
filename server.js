@@ -30,14 +30,14 @@ const sess = {
 };
 
 app.use(session(sess));
-// Configure Handlebars engine
+
 // Configure Handlebars engine
 app.engine(
   "handlebars",
-  hbs.engine // Use the hbs variable here instead of exphbs()
+  hbs.engine 
 );
-app.set("view engine", "handlebars"); // Set Handlebars as the view engine
-app.set("views", path.join(__dirname, "views")); // Set the views directory
+app.set("view engine", "handlebars"); 
+app.set("views", path.join(__dirname, "views")); 
 
 
 app.use(express.json());
@@ -45,7 +45,7 @@ app.use(express.urlencoded({ extended: true }));
 app.use(express.static(path.join(__dirname, "public")));
 
 // Route handling
-app.use("/", routes);
+app.use(routes);
 
 sequelize.sync({ force: false }).then(() => {
   app.listen(PORT, () => console.log(`Now listening on ${PORT}`));

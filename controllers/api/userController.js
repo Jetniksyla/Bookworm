@@ -1,6 +1,6 @@
 const router = require("express").Router();
 const { Review, User, Book } = require("../../models");
-const bcrypt = require('bcryptjs');
+const bcrypt = require("bcryptjs");
 
 // Create a new user (Signup)
 router.post("/", async (req, res) => {
@@ -85,30 +85,29 @@ router.get("/login", (req, res) => {
   res.render("login");
 });
 
+// User login
 router.post("/login", async (req, res) => {
   try {
     const { email, password } = req.body;
     const user = await User.findOne({ where: { email } });
 
     if (!user) {
-      // If no user is found with the provided email
       return res.status(401).json({ message: "Incorrect email or password." });
     }
-
-    // Use bcrypt to compare the submitted password to the hashed password in the database
     const validPassword = await bcrypt.compare(password, user.password);
 
     if (!validPassword) {
-      // If the password doesn't match
       return res.status(401).json({ message: "Incorrect email or password." });
     }
 
-    // If the email and password are correct, create a session
     req.session.save(() => {
-      req.session.userId = user_id;
-      req.session.loggedIn = true;
+      req.session.userId = user.id;
+      req.session.loggedIn = true; 
 
-      res.json({ user: user, message: "You are now logged in!" });
+      res.json({
+        user: { id: user.id, username: user.username, email: user.email },
+        message: "You are now logged in!",
+      });
     });
   } catch (error) {
     console.error("Login error:", error);

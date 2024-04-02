@@ -19,7 +19,7 @@ const sess = {
   cookie: {
     maxAge: 300000,
     httpOnly: true,
-    secure: false,
+    secure: process.env.NODE_ENV === "production",
     sameSite: "strict",
   },
   resave: false,
@@ -46,3 +46,4 @@ app.use(routes);
 sequelize.sync({ force: false }).then(() => {
   app.listen(PORT, () => console.log(`Now listening on ${PORT}`));
 });
+

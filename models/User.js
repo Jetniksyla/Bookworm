@@ -1,7 +1,7 @@
 // models/User.js
 const { Model, DataTypes } = require("sequelize");
 const sequelize = require("../config/connection");
-const bcrypt = require("bcrypt");
+const bcrypt = require("bcryptjs");
 
 class User extends Model {
   // Method to check password validity

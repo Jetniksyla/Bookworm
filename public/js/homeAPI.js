@@ -7,9 +7,12 @@ document.addEventListener("DOMContentLoaded", function () {
 function searchBook(item) {
   const searchInput = document.getElementById("search-input").value.trim();
   document.getElementById("carousel").style.display = "none";
+  document.querySelector(".book-search-title").style.display = "none";
+
 
   if (!searchInput) {
-    console.log("Please enter a search term.");
+    alert("Please enter a search term before pressing the search button.");
+    window.location.href = "/";
     return;
   }
 
@@ -50,7 +53,9 @@ function searchBook(item) {
         }
 
         const description = document.createElement("p");
+
         // Concatenate author and description into one string with a line break
+
         const authorText = item.volumeInfo.authors
           ? `Author: ${item.volumeInfo.authors.join(", ")}`
           : "Author: Unknown";
@@ -91,8 +96,9 @@ function searchBook(item) {
       console.error("Error:", error);
     });
 }
+
 async function handleFavorites(title, img, author, description, publishedDate) {
-  console.log(title);
+  
 
   const response = await fetch("/api/books", {
     method: "POST",

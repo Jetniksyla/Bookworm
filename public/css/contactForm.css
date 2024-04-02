@@ -32,10 +32,16 @@ form#contactForm {
 }
 
 #contactForm-btn {
-  background-color: azure;
+  background-color: white;
   color: black;
   display: flex;
   justify-content: center;
+  margin-bottom: 40px;
+}
+
+#contactForm-btn:hover {
+  background-color: rgb(232, 230, 227);
+  color: black;
 }
 
 form#contactForm input[type="text"],

@@ -56,7 +56,7 @@ function searchBook(item) {
           : "Author: Unknown";
         const descriptionText =
           item.volumeInfo.description || "No description available.";
-        description.innerHTML = `${authorText}<br> <br>${descriptionText}`; // Use innerHTML to include HTML tags
+        description.innerHTML = `${authorText}<br> <br>${descriptionText}`; 
 
         const favoriteBtn = document.createElement("button");
         favoriteBtn.textContent = "Add to Favorites";
@@ -66,15 +66,17 @@ function searchBook(item) {
         nextBtn.setAttribute("onclick", "getNextPage()");
         nextBtn.textContent = "Load More";
 
-        favoriteBtn.addEventListener("click", function(event) {
-          handleFavorites(
-              item.volumeInfo.title,
-              item.volumeInfo.imageLinks?.thumbnail,
-              item.volumeInfo.authors?.join(", "),
-              item.volumeInfo.description || "No description available."
-          )(event); 
-      });
-      
+        // Backend  Logic ------------------------------------------------
+
+        favoriteBtn.addEventListener("click", () =>
+        handleFavorites(
+            item.volumeInfo.title,
+            item.volumeInfo.imageLinks?.thumbnail,
+            item.volumeInfo.authors?.join(", "),
+            item.volumeInfo.description || "No description available.",
+            item.volumeInfo.publishedDate || "No public date available"
+          )
+        );
 
         card.appendChild(cardTitle);
         if (cardImage.src) {
@@ -89,22 +91,20 @@ function searchBook(item) {
       console.error("Error:", error);
     });
 }
-function handleFavorites(title, img, author, description) {
-  return async function (event) {
-    event.preventDefault();
+async function handleFavorites(title, img, author, description, publishedDate) {
+  console.log(title);
 
-    const response = await fetch("/api/books", {
-      method: "POST",
-      body: JSON.stringify({ title, img, author, description }),
-      headers: { "Content-Type": "application/json" },
-    });
-    if (response.ok) {
-      console.log("Your book has been added to favorites.");
-    } else {
-      const errorText = await response.text();
-      alert(`Failed to add to favorites: ${errorText}`);
-    }
-  };
+  const response = await fetch("/api/books", {
+    method: "POST",
+    body: JSON.stringify({ title, img, author, description, publishedDate }),
+    headers: { "Content-Type": "application/json" },
+  });
+  if (response.ok) {
+    console.log("Your book has been added to favorites.");
+  } else {
+
+    alert(`Failed to add to favorites`);
+  }
 }
 
 // ------------------------------ Carousel  --  Functions ----------------------------

@@ -36,9 +36,9 @@ router.get("/:id", async (req, res) => {
 router.post("/", withAuth, async (req, res) => {
   console.log(req.body);
   try {
-    const { title, author, img, description, publishedDate } = req.body; 
+    const { title, author, img, description, publishedDate } = req.body;
 
-    if (!title || !author || !img || !description  || !publishedDate) {
+    if (!title || !author || !img || !description || !publishedDate) {
       return res.status(400).json({
         message:
           "Please provide all required fields: title, author, published date, cover image, and description.",

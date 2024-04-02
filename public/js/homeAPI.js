@@ -56,7 +56,7 @@ function searchBook(item) {
           : "Author: Unknown";
         const descriptionText =
           item.volumeInfo.description || "No description available.";
-        description.innerHTML = `${authorText}<br> <br>${descriptionText}`; 
+        description.innerHTML = `${authorText}<br> <br>${descriptionText}`;
 
         const favoriteBtn = document.createElement("button");
         favoriteBtn.textContent = "Add to Favorites";
@@ -69,7 +69,7 @@ function searchBook(item) {
         // Backend  Logic ------------------------------------------------
 
         favoriteBtn.addEventListener("click", () =>
-        handleFavorites(
+          handleFavorites(
             item.volumeInfo.title,
             item.volumeInfo.imageLinks?.thumbnail,
             item.volumeInfo.authors?.join(", "),
@@ -102,10 +102,30 @@ async function handleFavorites(title, img, author, description, publishedDate) {
   if (response.ok) {
     console.log("Your book has been added to favorites.");
   } else {
-
     alert(`Failed to add to favorites`);
   }
 }
+
+const deleteBtn = document.querySelectorAll(".oneBook");
+
+deleteBtn.forEach((button) =>
+  button.addEventListener("click", function (event) {
+    const bookId = event.target.dataset.bookId;
+    console.log(bookId);
+    fetch(`/api/books/${bookId}`, {
+      method: "DELETE",
+    })
+      .then((response) => {
+        if (response.ok) {
+          console.log("Book deleted successfully");
+          event.target.closest(".book").remove();
+        } else {
+          console.error("Failed to delete the book");
+        }
+      })
+      .catch((error) => console.error("Error:", error));
+  })
+);
 
 // ------------------------------ Carousel  --  Functions ----------------------------
 

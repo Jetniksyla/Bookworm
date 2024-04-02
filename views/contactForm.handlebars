@@ -1,0 +1,27 @@
+<div class="homepage">
+<a class="homepage" href="http://localhost:3001/">Homepage</a>
+</div>
+<footer class="footer"> 
+    <div class="contact-us">
+        <h3 class="bold-text">Contact Us</h3>
+        <form id="contactForm" action="/" method="POST">
+            <label for="fullName">Full Name:</label>
+            <input type="text" id="fullName" name="fullName" placeholder="Your full name" required>
+            
+            <label for="email">Email Address:</label>
+            <input type="email" id="email" name="email" placeholder="Enter your email" required>
+            
+            <label for="phone">Phone Number:</label>
+            <input type="tel" id="phone" name="phone" placeholder="Enter your phone number" pattern="[0-9]{3}-[0-9]{3}-[0-9]{4}" required>
+            <small>Format: 123-456-7890</small>
+            
+            <label for="message">Your Message:</label>
+            <textarea id="message" name="message" rows="4" placeholder="Type your message here..." required></textarea>
+            
+            <button type="submit">Submit</button>
+        </form>
+    </div>
+</footer>
+
+
+<script src="/js/contactForm.js"></script>

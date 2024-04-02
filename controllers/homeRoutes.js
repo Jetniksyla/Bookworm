@@ -81,4 +81,9 @@ router.get("/favorites", async (req, res) => {
   }
 });
 
+
+router.get('/contactForm', async (req, res) => {
+  res.render("contactForm")
+})
+
 module.exports = router;

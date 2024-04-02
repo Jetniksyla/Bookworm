@@ -3,7 +3,7 @@
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  height: 85vh;
+  height: 90vh;
 }
 
 .image-container {
@@ -127,75 +127,3 @@
   transition: opacity 1s ease, visibility 1s ease;
 
 }
-/* 
-.carousel-image, .carousel-image1, .carousel-image2 {
-  transition: opacity 1s ease, visibility 1s ease;
-  position: relative;
-  opacity: 0;
-  top: 0;
-  left: 0;
-  visibility: hidden;
-}
-
-.visible {
-  opacity: 1;
-  visibility: visible;
-} */
-
-
-/*
-
-let currentImageIndex = 0;
-const images = document.querySelectorAll(".carousel-image");
-const totalImages = images.length;
-
-function showImage(index) {
-  images.forEach((img, idx) => {
-    if (idx === index) {
-      img.classList.add("visible");
-    } else {
-      img.classList.remove("visible");
-    }
-  });
-}
-
-document.getElementById("next").addEventListener("click", function () {
-  currentImageIndex = (currentImageIndex + 1) % totalImages;
-  showImage(currentImageIndex);
-});
-
-document.getElementById("back").addEventListener("click", function () {
-  currentImageIndex = (currentImageIndex - 1 + totalImages) % totalImages;
-  showImage(currentImageIndex);
-});
-
-// Automatically move to the next image every 3-4 seconds
-setInterval(function () {
-  currentImageIndex = (currentImageIndex + 1) % totalImages;
-  showImage(currentImageIndex);
-}, 5000);
-
-showImage(currentImageIndex); // Display the first image
-
-//------------------------------------------------------------------------------------
-
-  document.addEventListener('DOMContentLoaded', (event) => {
-    // Function to change the image in a container
-    function changeImage(containerSelector) {
-      const images = document.querySelectorAll(containerSelector);
-      let visibleImgIndex = Array.from(images).findIndex(img => img.classList.contains("carousel-image"));
-      
-      // Hide current, show next with wrap-around
-      const nextImgIndex = (visibleImgIndex + 1) % images.length;
-      images.forEach((img, idx) => {
-        if (idx === nextImgIndex) {
-          img.classList.add("visible");
-        } else {
-          img.classList.remove("visible");
-        }
-      });
-    }
-    // Set intervals for both containers
-    setInterval(() => changeImage('.image-container1 .carousel-image1'), 1300);
-    setInterval(() => changeImage('.image-container2 .carousel-image2'), 1500);
-  });

@@ -53,55 +53,6 @@ body {
   flex-direction: column;
 }
 
-#login-btn {
-  margin-top: auto;
-  margin-bottom: 10px;
-  height: 50px;
-  text-align: center;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  font-size: 23px;
-  color: rgb(232, 230, 227);
-  border-radius: 4px;
-  background: #3e78a7;
-}
-
-#logout-btn {
-  margin-bottom: 60px;
-  margin-top: 27px;
-  height: 110px;
-  text-align: center;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  font-size: 43px;
-  background: rgb(232, 230, 227);
-  border-radius: 20px;
-  color: #092841;
-  cursor: pointer;
-}
-
-#login-btn:hover,
-#login-btn:focus {
-  background-color: #3a5370;
-  outline: none;
-}
-
-#signup-btn:hover,
-#signup-btn:focus {
-  background-color: #3a5370;
-  outline: none;
-}
-
-#signup-btn {
-  margin-bottom: 50px;
-  text-align: center;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-}
-
 .nav-btn {
   margin-bottom: 10px;
   padding: 10px 20px;
@@ -273,4 +224,5 @@ body {
 .card p::-webkit-scrollbar-thumb:hover {
   background: #555;
 }
+
 

@@ -50,7 +50,7 @@ After completing the installation steps, you're ready to start using the Book Sh
     - Open your web browser and visit http://localhost:3001. This will take you to the home page of the Book Sharing Platform.
     - If you see a welcome page or the main interface of the application, the server is running correctly!
 
-    ![Screenshot of the Book Sharing Platform, showcasing the home page with search functionality.](../book-sharing-platform/)
+    ![Screenshot of the Book Sharing Platform, showcasing the home page with search functionality.](./public/images/Homepage.png)
 
 3. **Exploring Features**
     - ***Create an Account or Log In:*** To take full advantage of the platform's features, including adding books to your favorites, you'll need to create an account or log in. Click on the "Signup" or "Login" navigation links to access these features.
@@ -63,7 +63,7 @@ After completing the installation steps, you're ready to start using the Book Sh
 Your contributions are what make the community incredible. If you have an idea for improving this project, please fork the repository and create a pull request, or open an issue with your suggestions. For substantial changes, please open an issue first to discuss what you would like to change.
 
 ## Deployment
-This application is deployed on Heroku. You can access it [here](https://heroku.com).
+This application is deployed on Heroku. You can access it [here](https://search-book-application-dd0c88dd233b.herokuapp.com/signup).
 
 ## Authors and Acknowledgments
 - **Jayson Nunez** - *Initial work* - [GitHub](https://github.com/JaysonNunez1)

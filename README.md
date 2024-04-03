@@ -1,7 +1,7 @@
-# Book Sharing Platform
+# Bookworm
 
 ## Description
-The Book Sharing Platform is a comprehensive full-stack application designed to facilitate the discovery and sharing of books among users. It leverages a Node.js and Express.js backend with Sequelize ORM for database management, and Handlebars.js for dynamic page rendering. This platform stands out by incorporating user authentication, allowing users to add books to their favorites, and providing a seamless, interactive user experience.
+Bookworm is a comprehensive full-stack application designed to facilitate the discovery and sharing of books among users. It leverages a Node.js and Express.js backend with Sequelize ORM for database management, and Handlebars.js for dynamic page rendering. This platform stands out by incorporating user authentication, allowing users to add books to their favorites, and providing a seamless, interactive user experience.
 
 
 ## Table of Contents
@@ -40,17 +40,17 @@ The Book Sharing Platform is a comprehensive full-stack application designed to 
 4. Copy the `.env.EXAMPLE` file to a new file named `.env` and update it with your specific environment variables.
 
 ## Usage
-After completing the installation steps, you're ready to start using the Book Sharing Platform. Here's how to get started:
+After completing the installation steps, you're ready to start using Bookworm. Here's how to get started:
 
 1. **Starting the Server**
     - With the dependencies installed and your .env file set up, you're ready to launch the application. Navigate to your project directory in the terminal, if you're not already there.
     - Run npm start to start the server. If your package.json scripts are configured to use node server.js for the start command, this will boot up your application.
 
 2. **Accessing the Platform**
-    - Open your web browser and visit http://localhost:3001. This will take you to the home page of the Book Sharing Platform.
+    - Open your web browser and visit http://localhost:3001. This will take you to Bookworm's homepage.
     - If you see a welcome page or the main interface of the application, the server is running correctly!
 
-    ![Screenshot of the Book Sharing Platform, showcasing the home page with search functionality.](../book-sharing-platform/)
+    ![Screenshot of the Book Sharing Platform, showcasing the home page with search functionality.](./public/images/Homepage.png)
 
 3. **Exploring Features**
     - ***Create an Account or Log In:*** To take full advantage of the platform's features, including adding books to your favorites, you'll need to create an account or log in. Click on the "Signup" or "Login" navigation links to access these features.
@@ -63,7 +63,7 @@ After completing the installation steps, you're ready to start using the Book Sh
 Your contributions are what make the community incredible. If you have an idea for improving this project, please fork the repository and create a pull request, or open an issue with your suggestions. For substantial changes, please open an issue first to discuss what you would like to change.
 
 ## Deployment
-This application is deployed on Heroku. You can access it [here](https://heroku.com).
+This application is deployed on Heroku. You can access it [here](https://search-book-application-dd0c88dd233b.herokuapp.com/).
 
 ## Authors and Acknowledgments
 - **Jayson Nunez** - *Initial work* - [GitHub](https://github.com/JaysonNunez1)

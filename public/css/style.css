@@ -226,4 +226,19 @@ body {
   background: #555;
 }
 
+@media screen and (max-width: 991px) {
+  #navbar{
+    width: 200px;
+    padding: 10px;
+  }
 
+  #search-input {
+    width: 80%;
+  }
+  #search-button {
+    width: 20%;
+  }
+  .card {
+    width: calc(50%-20px);
+  }
+}

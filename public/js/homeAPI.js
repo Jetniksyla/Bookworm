@@ -9,7 +9,6 @@ function searchBook(item) {
   document.getElementById("carousel").style.display = "none";
   document.querySelector(".book-search-title").style.display = "none";
 
-
   if (!searchInput) {
     alert("Please enter a search term before pressing the search button.");
     window.location.href = "/";
@@ -98,8 +97,6 @@ function searchBook(item) {
 }
 
 async function handleFavorites(title, img, author, description, publishedDate) {
-  
-
   const response = await fetch("/api/books", {
     method: "POST",
     body: JSON.stringify({ title, img, author, description, publishedDate }),
@@ -179,4 +176,11 @@ document.addEventListener("DOMContentLoaded", (event) => {
 
   setInterval(() => changeImage(".image-container1 .carousel-image1"), 4750);
   setInterval(() => changeImage(".image-container2 .carousel-image2"), 5000);
+});
+
+document.addEventListener("DOMContentLoaded", function () {
+  document.getElementById("toggleNav").addEventListener("click", function () {
+    var navbar = document.getElementById("navbar");
+    navbar.classList.toggle("hide-nav");
+  });
 });

@@ -108,3 +108,26 @@
   background-color: #3a5370;
   outline: none;
 }
+
+@media only screen and (min-width: 768px) {
+  #loginForm input[id="email"],
+  #loginForm input[type="password"],
+  .login-btn,
+  #login-btn,
+  #logout-btn {
+    font-size: 25px; /* Larger font size for larger screens */
+  }
+
+  #loginForm label {
+    font-size: 30px;
+  }
+
+  #loginForm span,
+  #loginForm a {
+    font-size: 40px;
+  }
+
+  #h2-login-form {
+    font-size: 140px;
+  }
+}

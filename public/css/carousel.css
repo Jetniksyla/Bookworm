@@ -16,7 +16,7 @@
   margin: 20px;
   overflow: hidden;
   position: relative;
-  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.2), 0 0 60px rgba(0, 0, 0, 0.1) inset;
+  box-shadow:0 20px 60px rgba(3, 21, 78, 0.2), 0 0 80px rgba(2, 2, 63, 0.1) inset; 
   border: solid 4px transparent;
   border-radius: 10px;
   background-image: linear-gradient(white, white), radial-gradient(circle at top left, #007bff, #0056b3);

@@ -1,3 +1,4 @@
+// Import required modules
 const router = require("express").Router();
 const { Review, User, Book } = require("../../models");
 

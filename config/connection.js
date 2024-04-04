@@ -1,8 +1,11 @@
+// Import Sequelize library
 const Sequelize = require("sequelize");
+
+// Load environment variables from.env file
 require("dotenv").config();
 
+// Initialize sequelize instance with JAWSDB_URL or local MySQL connection
 let sequelize;
-
 if (process.env.JAWSDB_URL) {
   sequelize = new Sequelize(process.env.JAWSDB_URL);
 } else {

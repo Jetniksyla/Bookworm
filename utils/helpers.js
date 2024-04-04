@@ -1,3 +1,4 @@
+// Exporting an object that contains helper functions for formatting dates and times
 module.exports = {
   format_time: (date) => {
     return date.toLocaleTimeString();

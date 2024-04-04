@@ -1,9 +1,10 @@
+// Sets up event listeners for various DOM elements once the content is loaded, including search functionality, carousel navigation, and dynamic navbar behavior.
 document.addEventListener("DOMContentLoaded", function () {
   document
     .getElementById("search-button")
     .addEventListener("click", searchBook);
 });
-
+//  Function to get the book information from Google Books API and display it on the page
 function searchBook(item) {
   const searchInput = document.getElementById("search-input").value.trim();
   document.getElementById("carousel").style.display = "none";
@@ -14,12 +15,12 @@ function searchBook(item) {
     window.location.href = "/";
     return;
   }
-
+  //  Create our request object.
   const apiKey = "AIzaSyDbvvldgLOtmAV7OTzP0cTBAdKhU_AzCh4";
   const apiUrl = `https://www.googleapis.com/books/v1/volumes?q=intitle:${encodeURIComponent(
     searchInput
   )}&key=${apiKey}`;
-
+  //  Send the request to the server.
   fetch(apiUrl)
     .then((response) => {
       if (!response.ok) {
@@ -54,7 +55,6 @@ function searchBook(item) {
         const description = document.createElement("p");
 
         // Concatenate author and description into one string with a line break
-
         const authorText = item.volumeInfo.authors
           ? `Author: ${item.volumeInfo.authors.join(", ")}`
           : "Author: Unknown";
@@ -95,7 +95,6 @@ function searchBook(item) {
       console.error("Error:", error);
     });
 }
-
 async function handleFavorites(title, img, author, description, publishedDate) {
   const response = await fetch("/api/books", {
     method: "POST",
@@ -179,8 +178,15 @@ document.addEventListener("DOMContentLoaded", (event) => {
 });
 
 document.addEventListener("DOMContentLoaded", function () {
-  document.getElementById("toggleNav").addEventListener("click", function () {
-    var navbar = document.getElementById("navbar");
-    navbar.classList.toggle("hide-nav");
+  var navToggle = document.getElementById("nav-toggle");
+  var navbar = document.getElementById("navbar");
+
+  navToggle.addEventListener("click", function () {
+    // Toggle navbar visibility
+    if (navbar.style.display === "none" || navbar.style.display === "") {
+      navbar.style.display = "block";
+    } else {
+      navbar.style.display = "none";
+    }
   });
 });

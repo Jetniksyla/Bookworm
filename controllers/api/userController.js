@@ -1,3 +1,4 @@
+// Import required modules
 const router = require("express").Router();
 const { Review, User, Book } = require("../../models");
 const bcrypt = require("bcryptjs");
@@ -100,7 +101,7 @@ router.post("/login", async (req, res) => {
 
     req.session.save(() => {
       req.session.userId = user.id;
-      req.session.loggedIn = true; 
+      req.session.loggedIn = true;
 
       res.json({
         user: { id: user.id, username: user.username, email: user.email },

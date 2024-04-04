@@ -1,26 +1,33 @@
 <div class="homepage">
+  <!-- This is the homepage link that leads to the root URL ("/") -->
   <a class="homepage" href="/">Homepage</a>
 </div>
+
 <div class="favorites">
-  <h1>Favorites</h1> 
-    {{#if books.length}}
-      <div class="book-list">
-        {{#each books}}
-          <div class="book">
-            <h2>{{this.title}}</h2>
-            <img src="{{this.cover_image}}" alt="Cover image" />
-            <div class="card p ">
+  <h1>Favorites</h1>
+  <!-- The following code checks if the array 'books' is not empty -->
+  {{#if books.length}}
+    <!-- If the array 'books' is not empty, a book list is rendered -->
+    <div class="book-list">
+      <!-- Loop through the 'books' array and display each book's information -->
+      {{#each books}}
+        <div class="book">
+          <h2>{{this.title}}</h2>
+          <img src="{{this.cover_image}}" alt="Cover image" />
+          <div class="card p">
             <h5>{{this.author}}</h5>
             <p>{{this.description}}</p>
-            </div>
-            <button class="oneBook" data-book-id="{{this.id}}">Delete</button> 
           </div>
-        {{/each}}
-      </div>
-    {{else}}
-      <p>You have no favorite books added.</p>
-    {{/if}}
-  </div>
+          <!-- Delete button for removing a book from the favorites list -->
+          <button class="oneBook" data-book-id="{{this.id}}">Delete</button>
+        </div>
+      {{/each}}
+    </div>
+  {{else}}
+    <!-- If the array 'books' is empty, a message is displayed -->
+    <p>You have no favorite books added.</p>
+  {{/if}}
 </div>
 
+<!-- Import the homeAPI.js script for handling API requests -->
 <script src="/js/homeAPI.js"></script>

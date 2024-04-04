@@ -1,3 +1,4 @@
+/* -- This CSS styles the ".favorites" container, which holds the list of favorite books. */
 .favorites {
   width: 90%;
   display: flex;
@@ -14,11 +15,13 @@
   cursor: pointer;
 }
 
+/* -- This styles the h5 tag used in the ".book" component. */
 h5 {
   color: #1f1f1f;
   font-size: large;
 }
 
+/* -- This styles the ".book-list" container, which holds the list of books. */
 .book-list {
   display: flex;
   flex-wrap: wrap;
@@ -27,6 +30,7 @@ h5 {
   width: 100%;
 }
 
+/* -- This styles the individual ".book" component, which represents a book. */
 .book {
   width: 300px;
   display: flex;
@@ -46,6 +50,7 @@ h5 {
   transform: translateY(-10px);
 }
 
+/* -- This styles the images within the individual ".book" component. */
 .book img {
   width: 100%;
   height: 400px;
@@ -80,6 +85,7 @@ h5 {
   height: 200px;
 }
 
+/* -- This styles the ".oneBook" delete button, which is used to remove a book from the favorites list. */
 .oneBook {
   margin-top: 20px;
   padding: 10px 26px;

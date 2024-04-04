@@ -7,10 +7,14 @@
     </head>
   <body>
 
+      {{!-- <button id="nav-toggle" class="nav-toggle">Menu</button> --}}
+
+    <!-- Navigation bar containing links to different pages and login/signup buttons -->
     <nav id="navbar">
       <div class="link-container">
-        <a href="/" class="nav-btn">Home</a>
+        <a href="/" class="nav-btn" id="home">Home</a>
         <a href="/favorites" class="nav-btn">Favorites</a>
+        <!-- Display rotating book cover images -->
         <br />
         <img id="rotating-image" src="/images/24.jpg" height="273px" />
         <br />
@@ -19,6 +23,8 @@
         <img id="rotating-image2" src="/images/35.jpg" height="273px" />
         <br />
       </div>
+
+    <!-- Login/Signup/Contact Us buttons and logout button -->
       <div id="login-form-container"></div>
       {{#if logged_in}}
         <button class="nav-btn" id="logout-btn">Sign out</button>
@@ -27,14 +33,19 @@
         <a href="/signup" class="nav-btn" id="signup-btn">Sign-Up</a>
         <a href="/contactForm" class="nav-btn" id="contactForm-btn">Contact Us</a>
       {{/if}}
-
     </nav>
+    <!-- Main content containing the search bar and list of search results -->
 
     <div class="main-content">
+        <button id="nav-toggle">
+            <svg id="menu-icon" focusable="false" viewBox="0 0 24 24" width="24" height="24">
+            <path d="M3 18h18v-2H3v2zm0-5h18v-2H3v2zm0-7v2h18V6H3z"></path>
+            </svg>
+        </button>
       <h1 class="book-search-title">📚 Boundless Finds: Discover Your
         <span> Next Read</span>
         📚</h1>
-      <div class="search-container">
+    <div class="search-container">
         <input
           type="text"
           id="search-input"
@@ -42,13 +53,15 @@
         />
         <button id="search-button">Search</button>
     </div>
-  
+
+    <!-- Book search results container -->
   <section id="carousel">
   
-    <div class="image-container">
-    
+    <div class="image-container" id="mobileFix">
+
+          <!-- Navigation buttons for the carousel -->
           <button id="back" class="nav-btn">&#10094;</button> 
-            
+            <!-- Three carousel images container -->
             <img src="/images/27.jpg"                           alt="Book Cover Image" class="carousel-image" style="display: block;">
             <img src="/images/a-little-life.jpg"                alt="Book Cover Image" class="carousel-image" style="display: none;">
             <img src="/images/24.jpg"                           alt="Book Cover Image" class="carousel-image" style="display: none;">
@@ -64,7 +77,8 @@
             <img src="/images/there-there.jpg"                  alt="Book Cover Image" class="carousel-image" style="display: none;">
             <img src="/images/26.jpg"                           alt="Book Cover Image" class="carousel-image" style="display: none;">
             <img src="/images/the-art-of-fielding.jpg"          alt="Book Cover Image" class="carousel-image" style="display: none;">
-            
+          
+          <!-- Navigation buttons for the carousel -->
           <button id="next" class="nav-btn">&#10095;</button> 
     
       <div class="image-container1">

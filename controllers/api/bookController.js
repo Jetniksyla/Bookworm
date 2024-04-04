@@ -1,7 +1,9 @@
+// Exporting  all the modules
 const router = require("express").Router();
 const { Review, User, Book } = require("../../models");
 const withAuth = require("../../utils/withAuth");
 
+// GET route: Get all books including associated reviews and reviewers' usernames
 router.get("/", async (req, res) => {
   try {
     const bookData = await Book.findAll();
@@ -11,6 +13,7 @@ router.get("/", async (req, res) => {
   }
 });
 
+// GET route: Get a single book with ID including associated reviews and reviewers' usernames
 router.get("/:id", async (req, res) => {
   try {
     const bookData = await Book.findByPk(req.params.id, {
@@ -32,7 +35,7 @@ router.get("/:id", async (req, res) => {
   }
 });
 
-// POST route to create a new book
+// POST route: Create a new book with a user ID and required fields
 router.post("/", withAuth, async (req, res) => {
   console.log(req.body);
   try {
@@ -61,6 +64,7 @@ router.post("/", withAuth, async (req, res) => {
   }
 });
 
+// PUT route: Update a book with given ID
 router.put("/:id", async (req, res) => {
   try {
     const book = await Book.update(req.body, {
@@ -79,6 +83,7 @@ router.put("/:id", async (req, res) => {
   }
 });
 
+// DELETE route: Delete a book with given ID
 router.delete("/:id", async (req, res) => {
   try {
     const bookData = await Book.destroy({

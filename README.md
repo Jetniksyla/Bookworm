@@ -72,7 +72,7 @@ Your contributions are what make the community incredible. If you have an idea f
 
 ## Deployment
 
-This application is deployed on Heroku. You can access it [here](https://dashboard.heroku.com/apps/search-book-application).
+This application is deployed on Heroku. You can access it [here](https://search-book-application-dd0c88dd233b.herokuapp.com/).
 
 ## Authors and Acknowledgments
 

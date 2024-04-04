@@ -1,8 +1,8 @@
-// Importing seed functions for users, blogs, and comments
+// Seeds database with user, book, and review data from JSON files, ensuring all data is linked and consistent.
 const sequalize = require("../config/connection");
-const bookData = require("./bookData.json"); // Importing seed function for
-const bookReview = require("./reviewData.json"); // Importing seed function for reviews
-const bookUsers = require("./userData.json"); // Importing seed function for users
+const bookData = require("./bookData.json");
+const bookReview = require("./reviewData.json");
+const bookUsers = require("./userData.json");
 const { User, Book, Review } = require("../models");
 
 // Function to seed all data
@@ -17,11 +17,11 @@ const seedAll = async () => {
     });
   }
 
-await Review.bulkCreate(bookReview);
+  // Inserts multiple review records into the database from the bookReview JSON data using Sequelize's bulkCreate method.
+  await Review.bulkCreate(bookReview);
 
-  console.log("All seed data inserted successfully!"); // Log success message
+  console.log("All seed data inserted successfully!");
   process.exit(0); // Exit process
 };
 
-// Call seedAll function to start seeding process
 seedAll();

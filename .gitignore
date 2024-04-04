@@ -1,0 +1,22 @@
+# Node modules
+node_modules/
+
+# Environment variables
+.env
+
+# Log files
+*.log
+
+# Compiled output
+dist/
+tmp/
+out-tsc/
+bazel-out/
+
+# Editors
+.idea/
+.vscode/
+
+# Miscellaneous
+.DS_Store
+Thumbs.db

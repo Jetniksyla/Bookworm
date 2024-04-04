@@ -1,0 +1,210 @@
+/* Styles applicable for screens smaller than 768px */
+@media only screen and (max-width: 768px) {
+  .homepage {
+    justify-content: center;
+    font-size: large;
+    padding: 10px;
+  }
+
+  #navbar {
+    display: none;
+    margin-top: 90px;
+  }
+
+  #loginForm,
+  #signupForm {
+    margin-top: 35px;
+  }
+
+  /* Adjust font size for various elements on mobile devices */
+  #signupForm label #loginForm label,
+  form#contactForm label,
+  #signupForm input[type="text"],
+  #signupForm input[type="username"],
+  #signupForm input[type="email"],
+  #signupForm input[type="password"],
+  #signupForm input[type="text"]#lastname,
+  #h2-login-form,
+  #signupForm h2,
+  .bold-text {
+    font-size: 22px;
+  }
+
+  #h2-login-form,
+  #signupForm h2,
+  .bold-text {
+    font-size: 35px;
+  }
+
+  .login-btn,
+  #signupForm .signup-btn {
+    font-size: 18px;
+  }
+
+  #sign-up {
+    padding-left: initial;
+  }
+
+  .input-box,
+  form#contactForm {
+    width: 300px;
+    justify-content: center;
+  }
+
+  .contact-us {
+    width: auto;
+    height: auto;
+  }
+
+  form#contactForm {
+    height: 500px;
+  }
+
+  .footer {
+    background-color: transparent;
+    margin-top: 35px;
+    height: auto;
+  }
+
+  .carousel-image1,
+  .carousel-image2 {
+    width: auto;
+    display: none;
+  }
+
+  .flex-carousel,
+  #carousel .image-container {
+    display: flex;
+    justify-content: center;
+    background-color: transparent;
+  }
+
+  #carousel {
+    height: 100vh;
+    align-items: center;
+  }
+
+  #carousel .image-container {
+    height: 100%;
+    background: none;
+  }
+
+  #carousel-image {
+    width: 70%;
+    padding: 0;
+  }
+
+  .carousel-image,
+  .image-container1,
+  .image-container2 {
+    margin-bottom: 400px;
+    height: 270px;
+    width: 400px;
+    object-fit: cover;
+  }
+
+  #carousel .nav-btn {
+    display: none;
+  }
+}
+
+/* Styles applicable for screens smaller than 767px */
+@media screen and (max-width: 767px) {
+  #nav-toggle {
+    display: block;
+    top: 0;
+    position: absolute;
+    background: none;
+    border: 1px solid darkcyan;
+  }
+
+  .main-content {
+    margin: auto;
+    padding: 0;
+  }
+
+  #loginForm label,
+  #signupForm label {
+    font-size: 22px;
+  }
+
+  .book-search-title {
+    font-size: 17px;
+    padding: 65px 20px 20px;
+    display: flex;
+    flex-direction: column;
+  }
+
+  .main-content span {
+    font-size: 25px;
+  }
+
+  .search-container {
+    position: inherit;
+    margin: -6px auto;
+    width: fit-content;
+    z-index: 101;
+  }
+
+  #search-input {
+    width: 280px;
+    margin: auto;
+    height: 35px;
+    padding-left: 83px;
+    margin-top: 75px;
+  }
+
+  .carousel-image1,
+  .carousel-image2 {
+    display: none;
+    height: 230px;
+    width: 200px;
+  }
+
+  #navbar {
+    margin-top: 160px;
+    width: 100%;
+    height: 100%;
+    background-color: rgb(24, 26, 27);
+    padding: 0;
+  }
+
+  #rotating-image,
+  #rotating-image1,
+  #rotating-image2 {
+    display: none;
+  }
+
+  .link-container {
+    margin-bottom: -70px;
+  }
+
+  .nav-btn {
+    justify-content: center;
+  }
+
+  #home {
+    margin-top: 20px;
+  }
+
+  #search-button {
+    width: 78px;
+    height: 35px;
+    top: 75px;
+    left: 0;
+    font-size: large;
+  }
+
+  #logout-btn {
+    width: 100%;
+    height: auto;
+  }
+
+  #login-btn,
+  .nav-btn,
+  #contactForm-btn {
+    background: none;
+    color: white;
+    border: solid 1px white;
+  }
+}

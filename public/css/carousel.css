@@ -1,13 +1,15 @@
+/* Container for the carousel */
 #carousel {
   display: flex;
   flex-direction: column;
-  justify-content: center;
+  justify-content: flex-start;
   align-items: center;
-  height: 85vh;
+  height: auto;
+  margin-top: 10px;
 }
 
+/* Container for each image in the carousel */
 .image-container {
-  max-height: 80vh;
   text-align: center;
   width: 80%;
   display: flex;
@@ -24,7 +26,7 @@
   background-clip: content-box, border-box;
 }
 
-
+/* Previous and next navigation buttons for the carousel */
 #carousel .nav-btn {
   position: absolute;
   top: 50%;
@@ -44,6 +46,7 @@
   cursor: pointer;
 }
 
+/* Specific styling for back and next buttons */
 #carousel #back {
   left: 30px;
 }
@@ -58,6 +61,7 @@
   border-color: #0056b3;
 }
 
+/* Styling for the carousel image container */
 #carousel .image-container {
   max-height: 80vh;
   width: 85%;
@@ -72,17 +76,16 @@
   overflow: hidden;
   border-radius: 15px;
   position: relative;
-
   flex-wrap: wrap;
 }
 
 .carousel-image {
   max-height: calc(80vh - 50px);
   max-width: 100%;
-  margin-left: 30px;
   padding: 20px;
   border-radius: 30px;
   border: none;
+  z-index: 1;
 }
 
 #carousel .nav-btn1,
@@ -111,7 +114,7 @@
   height: 420px;
   flex-wrap: wrap;
   align-content: center;
-  margin: 25px 0;
+  margin: -17px 0;
   transition: opacity 1s ease, visibility 1s ease;
 
 }
@@ -123,7 +126,7 @@
   height: 100%;
   overflow: hidden;
   border-radius: 20px;
-  margin: 25px 0;
+  margin: 20px 0;
   transition: opacity 1s ease, visibility 1s ease;
-
+  margin-block-end: 100px;
 }

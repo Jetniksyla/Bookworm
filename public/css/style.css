@@ -1,3 +1,4 @@
+/* General frontend style*/
 html {
   background-color: rgb(24, 26, 27)
 }
@@ -22,12 +23,12 @@ body {
   text-transform: uppercase;
   letter-spacing: 2px;
   border-bottom: 2px solid #D3BCC0;
-  padding-bottom: 20px;
+  padding: 20px;
   /* background-image: url('/images/banned-books.jpg'); Add the path to your image */
 }
 
 #navbar {
-  position: fixed;
+  position: absolute;
   top: 0;
   left: 0;
   width: 250px;
@@ -38,15 +39,16 @@ body {
   padding: 20px;
   z-index: 100;
   justify-content: space-between;
-  height: 100%;
+  height: auto;
 }
 
 .main-content {
   margin-left: 290px;
-  padding: 20px;
+  padding: 0 20px;
   position: relative;
   z-index: 1;
   height: 100%;
+  margin-top: 20px;
 }
 
 .link-container {
@@ -203,11 +205,18 @@ body {
   color: rgb(232, 230, 227);
   border: none;
   cursor: pointer;
+  border-radius: 5px;
 }
 
 .card button:hover {
   background-color: #0056b3;
 }
+
+.card button:active {
+  background-color: #012f6f;
+  color: #e8e6e3;
+}
+
 
 /* Scrollbar styling */
 .card p::-webkit-scrollbar {
@@ -226,4 +235,15 @@ body {
   background: #555;
 }
 
-
+/* Hide the toggle button on larger screens */
+#nav-toggle {
+  display: none;
+  padding: 10px 20px;
+  background-color: #007bff;
+  color: white;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  font-size: 16px;
+  margin: 10px;
+}

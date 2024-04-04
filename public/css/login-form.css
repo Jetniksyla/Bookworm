@@ -70,7 +70,7 @@
 #h2-login-form {
   text-align: center;
   margin-bottom: 20px;
-  font-size: 140px;
+  font-size: 100px;
   color: rgb(232, 230, 227);
 }
 
@@ -96,7 +96,7 @@
   display: flex;
   justify-content: center;
   align-items: center;
-  font-size: 43px;
+  font-size: 30px;
   background: rgb(232, 230, 227);
   border-radius: 20px;
   color: #092841;

@@ -1,5 +1,4 @@
-console.log("JavaScript file loaded");
-
+//  Logout function
 const logout = async () => {
   try {
     console.log("Logout button clicked");

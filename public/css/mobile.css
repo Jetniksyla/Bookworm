@@ -54,6 +54,7 @@
   .contact-us {
     width: auto;
     height: auto;
+    margin: 20px auto;
   }
 
   form#contactForm {
@@ -62,7 +63,7 @@
 
   .footer {
     background-color: transparent;
-    margin-top: 35px;
+    margin: 20px;
     height: auto;
   }
 

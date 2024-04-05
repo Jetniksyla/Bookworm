@@ -4,7 +4,7 @@
   flex-direction: column;
   justify-content: flex-start;
   align-items: center;
-  height: auto;
+  height: 80%;
   margin-top: 10px;
 }
 
@@ -49,10 +49,12 @@
 /* Specific styling for back and next buttons */
 #carousel #back {
   left: 30px;
+  z-index: 2;
 }
 
 #carousel #next {
   right: 30px;
+  z-index: 2;
 }
 
 #carousel .nav-btn:hover {
@@ -82,7 +84,7 @@
 .carousel-image {
   max-height: calc(80vh - 50px);
   max-width: 100%;
-  padding: 20px;
+  padding: 5px 0;
   border-radius: 30px;
   border: none;
   z-index: 1;

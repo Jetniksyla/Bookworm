@@ -24,7 +24,7 @@
 
 .bold-text {
   font-weight: bold;
-  font-size: 55px;
+  font-size: 40px;
   margin-top: unset;
 }
 
@@ -66,7 +66,7 @@ form#contactForm textarea {
 
 form#contactForm label {
   margin-bottom: 5px;
-  font-size: 30px;
+  font-size: 25px;
   color: rgb(232, 230, 227);
 }
 

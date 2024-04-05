@@ -1,25 +1,33 @@
 // Sets up event listeners for various DOM elements once the content is loaded, including search functionality, carousel navigation, and dynamic navbar behavior.
+
 document.addEventListener("DOMContentLoaded", function () {
   document
     .getElementById("search-button")
     .addEventListener("click", searchBook);
 });
 //  Function to get the book information from Google Books API and display it on the page
-function searchBook(item) {
-  const searchInput = document.getElementById("search-input").value.trim();
+async function searchBook() {
+  // Fetch the API key from the server
+  const response = await fetch('/api/api-key');
   document.getElementById("carousel").style.display = "none";
   document.querySelector(".book-search-title").style.display = "none";
+  // Function to search for books
+  if (!response.ok) {
+    console.error('Failed to fetch API key');
+    return;
+  }
+  const { apiKey } = await response.json();
+
+  // Get the search input value
+  const searchInput = document.getElementById('search-input').value.trim();
 
   if (!searchInput) {
     alert("Please enter a search term before pressing the search button.");
-    window.location.href = "/";
-    return;
+    window.location.href = "/"; 
+    return ; // Exit the function early if searchInput is empty
   }
-  //  Create our request object.
-  const apiKey = "AIzaSyDbvvldgLOtmAV7OTzP0cTBAdKhU_AzCh4";
-  const apiUrl = `https://www.googleapis.com/books/v1/volumes?q=intitle:${encodeURIComponent(
-    searchInput
-  )}&key=${apiKey}`;
+  // Construct the API URL with the fetched API key
+  const apiUrl = `https://www.googleapis.com/books/v1/volumes?q=intitle:${encodeURIComponent(searchInput)}&key=${apiKey}`;
   //  Send the request to the server.
   fetch(apiUrl)
     .then((response) => {

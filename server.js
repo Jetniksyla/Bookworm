@@ -51,6 +51,7 @@ app.use(express.static(path.join(__dirname, "public")));
 
 // Endpoint to serve the API key to the client
 app.get("/api/api-key", (req, res) => {
+  const apiKey = process.env.API_KEY;
   res.json({ apiKey });
 });
 

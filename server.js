@@ -5,7 +5,8 @@ const session = require("express-session");
 const exphbs = require("express-handlebars");
 const routes = require("./controllers");
 const helpers = require("./utils/helpers");
-
+require("dotenv").config();
+const apiKey = process.env.API_KEY;
 // Database connection setup
 const sequelize = require("./config/connection");
 
@@ -47,6 +48,11 @@ app.set("views", path.join(__dirname, "views"));
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 app.use(express.static(path.join(__dirname, "public")));
+
+// Endpoint to serve the API key to the client
+app.get("/api/api-key", (req, res) => {
+  res.json({ apiKey });
+});
 
 // Use routes from the controllers directory
 app.use(routes);

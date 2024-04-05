@@ -24,7 +24,7 @@
 /* Style form labels for login form */
 #loginForm label {
   margin-bottom: 5px;
-  font-size: 30px;
+  font-size: 25px;
   color: rgb(232, 230, 227);
 }
 
@@ -57,7 +57,7 @@
   text-align: center;
   margin-bottom: 20px;
   color: rgb(51, 162, 255);
-  font-size: 40px;
+  font-size: 30px;
   text-decoration: none;
 }
 
@@ -70,7 +70,7 @@
 #h2-login-form {
   text-align: center;
   margin-bottom: 20px;
-  font-size: 100px;
+  font-size: 50px;
   color: rgb(232, 230, 227);
 }
 

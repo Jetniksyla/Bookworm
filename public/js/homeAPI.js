@@ -7,22 +7,25 @@ document.addEventListener("DOMContentLoaded", function () {
 });
 //  Function to get the book information from Google Books API and display it on the page
 async function searchBook() {
+  // Get the search input value
+  const searchInput = document.getElementById("search-input").value.trim();
+
   // Fetch the API key from the server
-  const response = await fetch('/api/api-key');
+  const response = await fetch("/api/api-key");
   document.getElementById("carousel").style.display = "none";
   document.querySelector(".book-search-title").style.display = "none";
   // Function to search for books
-  if (!response.ok) {
-    console.error('Failed to fetch API key');
+  if (!searchInput) {
+    alert("Please enter a search term before pressing the search button.");
+    window.location.href = "/";
     return;
   }
   const { apiKey } = await response.json();
 
-  // Get the search input value
-  const searchInput = document.getElementById('search-input').value.trim();
-
   // Construct the API URL with the fetched API key
-  const apiUrl = `https://www.googleapis.com/books/v1/volumes?q=intitle:${encodeURIComponent(searchInput)}&key=${apiKey}`;
+  const apiUrl = `https://www.googleapis.com/books/v1/volumes?q=intitle:${encodeURIComponent(
+    searchInput
+  )}&key=${apiKey}`;
   //  Send the request to the server.
   fetch(apiUrl)
     .then((response) => {

@@ -1,105 +1,99 @@
-// Sets up event listeners for various DOM elements once the content is loaded, including search functionality, carousel navigation, and dynamic navbar behavior.
-
 document.addEventListener("DOMContentLoaded", function () {
   document
     .getElementById("search-button")
-    .addEventListener("click", searchBook);
+    .addEventListener("click", initiateSearch);
 });
-//  Function to get the book information from Google Books API and display it on the page
-async function searchBook() {
-  // Get the search input value
-  const searchInput = document.getElementById("search-input").value.trim();
 
-  // Fetch the API key from the server
-  const response = await fetch("/api/api-key");
-  document.getElementById("carousel").style.display = "none";
-  document.querySelector(".book-search-title").style.display = "none";
-  // Function to search for books
+async function initiateSearch() {
+  const searchInput = document.getElementById("search-input").value.trim();
   if (!searchInput) {
     alert("Please enter a search term before pressing the search button.");
-    window.location.href = "/";
     return;
   }
-  const { apiKey } = await response.json();
 
-  // Construct the API URL with the fetched API key
+  hideUIComponents();
+  const apiKey = await fetchApiKey();
+  if (!apiKey) return; // Stop the process if no API key is found
+
+  searchBook(searchInput, apiKey);
+}
+
+async function fetchApiKey() {
+  try {
+    const response = await fetch("/api/api-key");
+    if (!response.ok) throw new Error("Failed to fetch the API key.");
+    const { apiKey } = await response.json();
+    if (typeof apiKey === "undefined") throw new Error("API key is undefined.");
+    return apiKey;
+  } catch (error) {
+    console.error("Error fetching API key:", error);
+    alert("There was a problem fetching the API key. Please try again later.");
+  }
+}
+
+function hideUIComponents() {
+  document.getElementById("carousel").style.display = "none";
+  document.querySelector(".book-search-title").style.display = "none";
+}
+
+async function searchBook(searchInput, apiKey) {
   const apiUrl = `https://www.googleapis.com/books/v1/volumes?q=intitle:${encodeURIComponent(
     searchInput
   )}&key=${apiKey}`;
-  //  Send the request to the server.
-  fetch(apiUrl)
-    .then((response) => {
-      if (!response.ok) {
-        throw new Error("Network response was not ok");
-      }
-      return response.json();
-    })
-    .then((data) => {
-      const bookContainer = document.getElementById("book-container");
-      bookContainer.innerHTML = "";
 
-      if (!data.items || data.items.length === 0) {
-        bookContainer.innerHTML =
-          "<p style='color: red; font-size: 26px;'>No books found with that title. Try another search query.</p>";
-        return;
-      }
-      data.items.forEach((item) => {
-        const card = document.createElement("div");
-        card.setAttribute("class", "card");
+  try {
+    const response = await fetch(apiUrl);
+    if (!response.ok) throw new Error("Network response was not ok.");
+    const data = await response.json();
 
-        const cardTitle = document.createElement("h2");
-        cardTitle.textContent = item.volumeInfo.title;
+    displayBooks(data);
+  } catch (error) {
+    console.error("Error searching for books:", error);
+  }
+}
 
-        const cardImage = document.createElement("img");
-        if (
-          item.volumeInfo.imageLinks &&
-          item.volumeInfo.imageLinks.thumbnail
-        ) {
-          cardImage.setAttribute("src", item.volumeInfo.imageLinks.thumbnail);
-        }
+function displayBooks(data) {
+  const bookContainer = document.getElementById("book-container");
+  bookContainer.innerHTML = "";
 
-        const description = document.createElement("p");
+  if (!data.items || data.items.length === 0) {
+    bookContainer.innerHTML =
+      "<p style='color: red; font-size: 26px;'>No books found with that title. Try another search query.</p>";
+    return;
+  }
 
-        // Concatenate author and description into one string with a line break
-        const authorText = item.volumeInfo.authors
-          ? `Author: ${item.volumeInfo.authors.join(", ")}`
-          : "Author: Unknown";
-        const descriptionText =
-          item.volumeInfo.description || "No description available.";
-        description.innerHTML = `${authorText}<br> <br>${descriptionText}`;
+  data.items.forEach((item) => createBookCard(item, bookContainer));
+}
 
-        const favoriteBtn = document.createElement("button");
-        favoriteBtn.textContent = "Add to Favorites";
+function createBookCard(item, container) {
+  const card = document.createElement("div");
+  card.setAttribute("class", "card");
 
-        const nextBtn = document.createElement("button");
-        nextBtn.setAttribute("id", "nextPage");
-        nextBtn.setAttribute("onclick", "getNextPage()");
-        nextBtn.textContent = "Load More";
+  const cardTitle = document.createElement("h2");
+  cardTitle.textContent = item.volumeInfo.title;
+  card.appendChild(cardTitle);
 
-        // Backend  Logic ------------------------------------------------
+  if (item.volumeInfo.imageLinks && item.volumeInfo.imageLinks.thumbnail) {
+    const cardImage = document.createElement("img");
+    cardImage.setAttribute("src", item.volumeInfo.imageLinks.thumbnail);
+    card.appendChild(cardImage);
+  }
 
-        favoriteBtn.addEventListener("click", () =>
-          handleFavorites(
-            item.volumeInfo.title,
-            item.volumeInfo.imageLinks?.thumbnail,
-            item.volumeInfo.authors?.join(", "),
-            item.volumeInfo.description || "No description available.",
-            item.volumeInfo.publishedDate || "No public date available"
-          )
-        );
+  const description = document.createElement("p");
+  const authorText = item.volumeInfo.authors
+    ? `Author: ${item.volumeInfo.authors.join(", ")}`
+    : "Author: Unknown";
+  const descriptionText =
+    item.volumeInfo.description || "No description available.";
+  description.innerHTML = `${authorText}<br><br>${descriptionText}`;
+  card.appendChild(description);
 
-        card.appendChild(cardTitle);
-        if (cardImage.src) {
-          card.appendChild(cardImage);
-        }
-        card.appendChild(description);
-        card.appendChild(favoriteBtn);
-        bookContainer.appendChild(card);
-      });
-    })
-    .catch((error) => {
-      console.error("Error:", error);
-    });
+  const favoriteBtn = document.createElement("button");
+  favoriteBtn.textContent = "Add to Favorites";
+  favoriteBtn.addEventListener("click", () => handleFavorites(item.volumeInfo));
+  card.appendChild(favoriteBtn);
+
+  container.appendChild(card);
 }
 async function handleFavorites(title, img, author, description, publishedDate) {
   const response = await fetch("/api/books", {

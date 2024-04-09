@@ -1,7 +1,7 @@
 // Import required modules
 const router = require("express").Router();
 const { Review, User, Book } = require("../../models");
-const bcrypt = require("bcryptjs");
+const bcrypt = require("bcrypt");
 
 // Create a new user (Signup)
 router.post("/", async (req, res) => {

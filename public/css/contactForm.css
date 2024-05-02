@@ -10,6 +10,7 @@
 }
 
 .contact-us {
+  height: fit-content;
   display: flex;
   background-color: #292b2d;
   flex-direction: column;
